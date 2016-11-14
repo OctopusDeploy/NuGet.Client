@@ -775,7 +775,7 @@ namespace NuGet.Packaging
 
         private static bool ValidateSpecialVersionLength(SemanticVersion version)
         {
-            return version == null || !version.IsPrerelease || version.Release.Length <= 20;
+            return version == null || !version.IsPrerelease || version.Release.Length <= 250;
         }
 
         private void WriteOpcManifestRelationship(ZipArchive package, string path, string psmdcpPath)
@@ -867,6 +867,7 @@ namespace NuGet.Packaging
                     new XElement(dc + "creator", String.Join(", ", Authors)),
                     new XElement(dc + "description", Description),
                     new XElement(dc + "identifier", Id),
+                    // OCTOPUS: Use the original version string
                     new XElement(core + "version", Version.ToString()),
                     //new XElement(core + "language", Language),
                     new XElement(core + "keywords", ((IPackageMetadata)this).Tags),

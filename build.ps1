@@ -2,7 +2,7 @@
 param (
     [ValidateSet("debug", "release")]
     [string]$Configuration = 'debug',
-    [ValidateSet("release","rtm", "rc", "rc1", "beta", "beta1", "beta2", "final", "xprivate", "zlocal")]
+    [ValidateSet("octopus", "release","rtm", "rc", "rc1", "beta", "beta1", "beta2", "final", "xprivate", "zlocal")]
     [string]$ReleaseLabel = 'zlocal',
     [int]$BuildNumber,
     [switch]$SkipRestore,
@@ -60,7 +60,13 @@ $startTime = [DateTime]::UtcNow
 if (-not $BuildNumber) {
     $BuildNumber = Get-BuildNumber
 }
-Trace-Log "Build #$BuildNumber started at $startTime"
+
+$FullBuildNumber = "$PackageReleaseVersion-$ReleaseLabel-$BuildNumber"
+Trace-Log "Build $FullBuildNumber started at $startTime"
+
+if ($env:TEAMCITY_VERSION) {
+    Write-Host "##teamcity[buildNumber '$(Format-TeamCityMessage("$FullBuildNumber"))']"
+}
 
 $BuildErrors = @()
 
