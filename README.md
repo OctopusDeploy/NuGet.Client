@@ -1,4 +1,4 @@
-![Octopus loves NuGet](http://imgur.com/EnG2O4K)
+![Octopus loves NuGet](http://i.imgur.com/EnG2O4K.png)
 
 -------------
 
