@@ -1,7 +1,4 @@
-
-![Octopus Logo](https://i.octopus.com/blog/201605-logo-text-blueblacktransparent-400_rgb-TTE8.png)
-![Heart](https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg)
-![NuGet logo](https://raw.githubusercontent.com/NuGet/Home/master/resources/nuget.png)
+![Octopus loves NuGet](http://imgur.com/EnG2O4K)
 
 -------------
 
