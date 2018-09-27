@@ -74,6 +74,8 @@ namespace NuGet.Protocol
                     queryString += "&" + types;
                 }
 
+                queryString += "&semVerLevel=2.0.0";
+
                 queryUrl.Query = queryString;
 
                 if (!cancellationToken.IsCancellationRequested)
