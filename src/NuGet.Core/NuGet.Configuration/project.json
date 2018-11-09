@@ -1,7 +1,8 @@
 ﻿{
   "version": "3.6.0-*",
   "authors": [
-    "NuGet"
+    "NuGet",
+    "Octopus Deploy"
   ],
   "description": "NuGet's client configuration settings implementation.",
   "copyright": "Copyright .NET Foundation. All rights reserved.",
@@ -11,8 +12,8 @@
       "configuration",
       "nuget.config"
     ],
-    "licenseUrl": "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt",
-    "projectUrl": "https://github.com/NuGet/NuGet.Client"
+    "licenseUrl": "https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt",
+    "projectUrl": "https://github.com/OctopusDeploy/NuGet.Client"
   },
   "buildOptions": {
     "warningsAsErrors": true,

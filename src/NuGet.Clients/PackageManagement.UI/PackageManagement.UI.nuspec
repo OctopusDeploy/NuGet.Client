@@ -4,11 +4,11 @@
     <id>NuGet.PackageManagement.UI</id>
     <version>1.0.0-overrideme</version>
     <title>NuGet's Package Management UI for Visual Studio</title>
-    <authors>NuGet</authors>
+    <authors>NuGet, Octopus Deploy</authors>
     <copyright>Copyright .NET Foundation. All rights reserved.</copyright>
     <owners>NuGet</owners>
-    <projectUrl>https://github.com/NuGet/NuGet.Client</projectUrl>
-    <licenseUrl>https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/OctopusDeploy/NuGet.Client</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>NuGet's Package Management UI for Visual Studio</description>
     <dependencies>
