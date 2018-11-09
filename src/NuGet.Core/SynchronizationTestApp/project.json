@@ -2,14 +2,15 @@
   "version": "1.0.0-*",
   "description": "SynchronizationTestApp Console Application",
   "authors": [
-    "yigalatz"
+    "yigalatz",
+    "Octopus Deploy"
   ],
   "packOptions": {
     "tags": [
       ""
     ],
-    "licenseUrl": "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt",
-    "projectUrl": "https://github.com/NuGet/NuGet.Client"
+    "licenseUrl": "https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt",
+    "projectUrl": "https://github.com/OctopusDeploy/NuGet.Client"
   },
   "copyright": "Copyright .NET Foundation. All rights reserved.",
   "buildOptions": {
