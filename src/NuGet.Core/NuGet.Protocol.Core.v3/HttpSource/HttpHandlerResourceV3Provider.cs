@@ -39,14 +39,22 @@ namespace NuGet.Protocol
         {
             var sourceUri = packageSource.SourceUri;
             var proxy = ProxyCache.Instance.GetProxy(sourceUri);
-
+            var useProxy = ProxyCache.Instance.UseProxy();
+#if IS_CORECLR
+            var defaultProxyCredentials = ProxyCache.Instance.GetDefaultProxyCredentials();
+#endif
             // replace the handler with the proxy aware handler
             var clientHandler = new HttpClientHandler
             {
+                UseProxy = useProxy,
                 Proxy = proxy,
+#if IS_CORECLR
+                DefaultProxyCredentials = defaultProxyCredentials,
+#endif
                 AutomaticDecompression = (DecompressionMethods.GZip | DecompressionMethods.Deflate)
             };
 
+            
             // HTTP handler pipeline can be injected here, around the client handler
             HttpMessageHandler messageHandler = clientHandler;
 
