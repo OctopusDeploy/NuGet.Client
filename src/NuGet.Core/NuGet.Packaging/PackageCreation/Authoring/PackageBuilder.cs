@@ -21,6 +21,7 @@ namespace NuGet.Packaging
 {
     public class PackageBuilder : IPackageMetadata
     {
+        private static readonly DateTime MinZipLastWriteTime = new DateTime(1980, 1, 1, 0, 0, 0);
         private const string DefaultContentType = "application/octet";
         private static readonly Uri DefaultUri = new Uri("http://defaultcontainer/");
         internal const string ManifestRelationType = "manifest";
@@ -452,6 +453,7 @@ namespace NuGet.Packaging
                 PackageIdValidator.ValidatePackageId(dep.Id);
             }
 
+            /*
             if (!version.IsPrerelease)
             {
                 // If we are creating a production package, do not allow any of the dependencies to be a prerelease version.
@@ -461,6 +463,7 @@ namespace NuGet.Packaging
                     throw new InvalidDataException(String.Format(CultureInfo.CurrentCulture, NuGetResources.Manifest_InvalidPrereleaseDependency, prereleaseDependency.ToString()));
                 }
             }
+            */
         }
 
         public static void ValidateReferenceAssemblies(IEnumerable<IPackageFile> files, IEnumerable<PackageReferenceSet> packageAssemblyReferences)
@@ -577,7 +580,7 @@ namespace NuGet.Packaging
                 {
                     try
                     {
-                        CreatePart(package, file.Path, stream);
+                        CreatePart(package, file, stream);
                         var fileExtension = Path.GetExtension(file.Path);
 
                         // We have files without extension (e.g. the executables for Nix)
@@ -717,16 +720,24 @@ namespace NuGet.Packaging
             }
         }
 
-        private static void CreatePart(ZipArchive package, string path, Stream sourceStream)
+        private static void CreatePart(ZipArchive package, IPackageFile file, Stream sourceStream)
         {
-            if (PackageHelper.IsNuspec(path))
+            if (PackageHelper.IsNuspec(file.Path))
             {
                 return;
             }
 
-            string entryName = CreatePartEntryName(path);
+            string entryName = CreatePartEntryName(file.Path);
 
             var entry = package.CreateEntry(entryName, CompressionLevel.Optimal);
+            var physicalFile = file as PhysicalPackageFile;
+            var lastWriteTime = physicalFile?.GetLastWriteTime();
+            if (lastWriteTime.HasValue)
+            {
+                // https://github.com/OctopusDeploy/OctopusClients/issues/245
+                // The minimum LastWriteTime for a ZIP entry is 1/1/1980
+                entry.LastWriteTime = new DateTime(Math.Max(lastWriteTime.Value.Ticks, MinZipLastWriteTime.Ticks));
+            }
             using (var stream = entry.Open())
             {
                 sourceStream.CopyTo(stream);
@@ -775,7 +786,7 @@ namespace NuGet.Packaging
 
         private static bool ValidateSpecialVersionLength(SemanticVersion version)
         {
-            return version == null || !version.IsPrerelease || version.Release.Length <= 20;
+            return version == null || !version.IsPrerelease || version.Release.Length <= 250;
         }
 
         private void WriteOpcManifestRelationship(ZipArchive package, string path, string psmdcpPath)
@@ -867,6 +878,7 @@ namespace NuGet.Packaging
                     new XElement(dc + "creator", String.Join(", ", Authors)),
                     new XElement(dc + "description", Description),
                     new XElement(dc + "identifier", Id),
+                    // OCTOPUS: Use the original version string
                     new XElement(core + "version", Version.ToString()),
                     //new XElement(core + "language", Language),
                     new XElement(core + "keywords", ((IPackageMetadata)this).Tags),

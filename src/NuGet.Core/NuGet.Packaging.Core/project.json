@@ -1,13 +1,14 @@
 ﻿{
-  "version": "3.5.0-*",
+  "version": "3.6.0-*",
   "description": "The core data structures for NuGet.Packaging",
   "authors": [
-    "NuGet"
+    "NuGet",
+    "Octopus Deploy"
   ],
   "copyright": "Copyright .NET Foundation. All rights reserved.",
   "packOptions": {
-    "licenseUrl": "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt",
-    "projectUrl": "https://github.com/NuGet/NuGet.Client"
+    "licenseUrl": "https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt",
+    "projectUrl": "https://github.com/OctopusDeploy/NuGet.Client"
   },
   "buildOptions": {
     "warningsAsErrors": true,

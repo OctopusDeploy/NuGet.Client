@@ -10,5 +10,7 @@ namespace NuGet.Configuration
     {
         void Add(IWebProxy proxy);
         IWebProxy GetProxy(Uri uri);
+        ICredentials GetDefaultProxyCredentials();
+        bool UseProxy();
     }
 }

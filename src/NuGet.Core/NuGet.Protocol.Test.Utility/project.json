@@ -1,9 +1,13 @@
 ﻿{
   "version": "1.0.0-*",
+  "authors": [
+    "NuGet",
+    "Octopus Deploy"
+  ],
   "copyright": "Copyright .NET Foundation. All rights reserved.",
   "packOptions": {
-    "licenseUrl": "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt",
-    "projectUrl": "https://github.com/NuGet/NuGet.Client"
+    "licenseUrl": "https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt",
+    "projectUrl": "https://github.com/OctopusDeploy/NuGet.Client"
   },
   "buildOptions": {
     "warningsAsErrors": true,

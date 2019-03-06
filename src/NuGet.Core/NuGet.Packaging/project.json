@@ -1,8 +1,9 @@
 ﻿{
-  "version": "3.5.0-*",
+  "version": "3.6.0-*",
   "description": "NuGet's implementation for reading nupkg package and nuspec package specification files.",
   "authors": [
-    "NuGet"
+    "NuGet",
+    "Octopus Deploy"
   ],
   "copyright": "Copyright .NET Foundation. All rights reserved.",
   "packOptions": {
@@ -10,8 +11,8 @@
       "semver",
       "semantic versioning"
     ],
-    "licenseUrl": "https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt",
-    "projectUrl": "https://github.com/NuGet/NuGet.Client"
+    "licenseUrl": "https://raw.githubusercontent.com/OctopusDeploy/NuGet.Client/dev/LICENSE.txt",
+    "projectUrl": "https://github.com/OctopusDeploy/NuGet.Client"
   },
   "buildOptions": {
     "warningsAsErrors": true,

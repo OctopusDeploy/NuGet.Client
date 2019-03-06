@@ -28,11 +28,12 @@ namespace NuGet.Protocol
         private const string W3Atom = "http://www.w3.org/2005/Atom";
         private const string MetadataNS = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
         private const string DataServicesNS = "http://schemas.microsoft.com/ado/2007/08/dataservices";
-        private const string FindPackagesByIdFormat = "/FindPackagesById()?id='{0}'";
-        private const string SearchEndPointFormat = "/Search()?$filter={0}&searchTerm='{1}'&targetFramework='{2}'&includePrerelease={3}&$skip={4}&$top={5}";
+        private const string FindPackagesByIdFormat = "/FindPackagesById()?id='{0}'&" + SemVerLevel;
+        private const string SearchEndPointFormat = "/Search()?$filter={0}&searchTerm='{1}'&targetFramework='{2}'&includePrerelease={3}&$skip={4}&$top={5}&" + SemVerLevel;
         private const string GetPackagesFormat = "/Packages(Id='{0}',Version='{1}')";
         private const string IsLatestVersionFilterFlag = "IsLatestVersion";
         private const string IsAbsoluteLatestVersionFilterFlag = "IsAbsoluteLatestVersion";
+        private const string SemVerLevel = "semVerLevel=2.0.0";
 
         // XNames used in the feed
         private static readonly XName _xnameEntry = XName.Get("entry", W3Atom);
@@ -49,6 +50,7 @@ namespace NuGet.Protocol
         private static readonly XName _xnameProjectUrl = XName.Get("ProjectUrl", DataServicesNS);
         private static readonly XName _xnameTags = XName.Get("Tags", DataServicesNS);
         private static readonly XName _xnameReportAbuseUrl = XName.Get("ReportAbuseUrl", DataServicesNS);
+        private static readonly XName _xnameReleaseNotes = XName.Get("ReleaseNotes", DataServicesNS);
         private static readonly XName _xnameDependencies = XName.Get("Dependencies", DataServicesNS);
         private static readonly XName _xnameRequireLicenseAcceptance = XName.Get("RequireLicenseAcceptance", DataServicesNS);
         private static readonly XName _xnameDownloadCount = XName.Get("DownloadCount", DataServicesNS);
@@ -297,6 +299,7 @@ namespace NuGet.Protocol
             string licenseUrl = GetValue(properties, _xnameLicenseUrl);
             string projectUrl = GetValue(properties, _xnameProjectUrl);
             string reportAbuseUrl = GetValue(properties, _xnameReportAbuseUrl);
+            string releaseNotes = GetValue(properties, _xnameReleaseNotes);
             string tags = GetValue(properties, _xnameTags);
             string dependencies = GetValue(properties, _xnameDependencies);
 
@@ -340,7 +343,8 @@ namespace NuGet.Protocol
                 requireLicenseAcceptance, downloadUrl, downloadCount,
                 packageHash,
                 packageHashAlgorithm,
-                minClientVersion
+                minClientVersion,
+                releaseNotes
                 );
         }
 
