@@ -20,7 +20,9 @@ namespace NuGet.Configuration
         /// </summary>
         private static readonly IWebProxy _originalSystemProxy = WebRequest.GetSystemWebProxy();
 #endif
-        private static IWebProxy _overrideProxy;
+        private IWebProxy _overrideProxy;
+        private ICredentials _overrideProxyCredentials;
+        private bool _overrideProxySet;
         private readonly ConcurrentDictionary<Uri, ICredentials> _cachedCredentials = new ConcurrentDictionary<Uri, ICredentials>();
 
         private readonly ISettings _settings;
@@ -53,7 +55,15 @@ namespace NuGet.Configuration
         public IWebProxy GetProxy(Uri sourceUri)
         {
             // Use the override proxy if someone has set it in code
-            if (_overrideProxy != null) return _overrideProxy;
+            if (_overrideProxy != null)
+            {
+                return _overrideProxy;
+            }
+
+            if (_overrideProxySet)
+            {
+                return null;
+            }
 
             // Check if the user has configured proxy details in settings or in the environment.
             var configuredProxy = GetUserConfiguredProxy();
@@ -76,6 +86,16 @@ namespace NuGet.Configuration
             return null;
         }
 
+        public ICredentials GetDefaultProxyCredentials()
+        {
+            return _overrideProxyCredentials;
+        }
+
+        public bool UseProxy()
+        {
+            return _overrideProxySet;
+        }
+
         // Adds new proxy credentials to cache if there's not any in there yet
         private bool TryAddProxyCredentialsToCache(WebProxy configuredProxy)
         {
@@ -84,9 +104,11 @@ namespace NuGet.Configuration
             return _cachedCredentials.TryAdd(configuredProxy.ProxyAddress, proxyCredentials);
         }
 
-        public void SetOverrideProxy(IWebProxy proxy)
+        public void SetOverrideProxySettings(IWebProxy proxy, ICredentials credentials)
         {
             _overrideProxy = proxy;
+            _overrideProxyCredentials = credentials;
+            _overrideProxySet = true;
         }
 
         public WebProxy GetUserConfiguredProxy()
