@@ -209,3 +209,4 @@ launchSettings.json
 *.imagemanifest
 
 test/ManualTests/
+.claude/settings.local.json
