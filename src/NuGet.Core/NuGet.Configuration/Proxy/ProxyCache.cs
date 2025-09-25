@@ -3,11 +3,13 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using NuGet.Common;
 
 namespace NuGet.Configuration
 {
+    [SuppressMessage("Style", "IDE1006:Naming Styles")]
     public class ProxyCache : IProxyCache, IProxyCredentialCache
     {
 #if !IS_CORECLR
@@ -20,6 +22,21 @@ namespace NuGet.Configuration
         /// </summary>
         private static readonly IWebProxy _originalSystemProxy = WebRequest.GetSystemWebProxy();
 #endif
+        /// <summary>
+        /// Octopus overrides the proxy so we can ensure that the credentials are refreshed every time.
+        /// </summary>
+        /// <remarks>
+        /// This was a fix implemented on an older version of NuGet 3.6.1
+        /// https://github.com/OctopusDeploy/Issues/issues/2959
+        /// This fix was rejected https://github.com/NuGet/NuGet.Client/pull/1153
+        /// That lead us to fork and implement this fix.
+        ///
+        /// In updating Octopus to 6.14.x we opted to maintain this fix as a work around.
+        /// </remarks>
+        private IWebProxy? _overrideProxy;
+        private ICredentials? _overrideProxyCredentials;
+        private bool _overrideProxySet;
+
         private readonly ConcurrentDictionary<Uri, ICredentials> _cachedCredentials = new ConcurrentDictionary<Uri, ICredentials>();
 
         private readonly ISettings _settings;
@@ -48,6 +65,18 @@ namespace NuGet.Configuration
 
         public IWebProxy? GetProxy(Uri sourceUri)
         {
+            // Use the override proxy if someone has set it in code
+            if (_overrideProxy != null)
+            {
+                return _overrideProxy;
+            }
+
+            if (_overrideProxySet)
+            {
+                return null;
+            }
+
+            // Original NuGet Code below:
             // Check if the user has configured proxy details in settings or in the environment.
             var configuredProxy = GetUserConfiguredProxy();
             if (configuredProxy != null)
@@ -69,12 +98,45 @@ namespace NuGet.Configuration
             return null;
         }
 
+        /// <summary>
+        /// Get the manually overwritten proxy credentials
+        /// </summary>
+        /// <returns></returns>
+        public ICredentials? GetDefaultProxyCredentials()
+        {
+            return _overrideProxyCredentials;
+        }
+
+        public bool UseProxy()
+        {
+            return _overrideProxySet;
+        }
+
         // Adds new proxy credentials to cache if there's not any in there yet
         private bool TryAddProxyCredentialsToCache(WebProxy configuredProxy)
         {
             // If a proxy was cached, it means the stored credentials are incorrect. Use the cached one in this case.
             var proxyCredentials = configuredProxy.Credentials ?? CredentialCache.DefaultCredentials;
             return _cachedCredentials.TryAdd(configuredProxy.ProxyAddress, proxyCredentials);
+        }
+
+        /// <summary>
+        /// Set the manually overwritten proxy settings(these will be used by various v3 providers)
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// var proxy = new WebProxy("http://proxy.com");
+        /// var credentials = new NetworkCredential("username", "password");
+        /// ProxyCache.Instance.SetOverrideProxySettings(proxy, credentials);
+        /// </code>
+        /// </example>
+        /// <param name="proxy"></param>
+        /// <param name="credentials"></param>
+        public void SetOverrideProxySettings(IWebProxy proxy, ICredentials credentials)
+        {
+            _overrideProxy = proxy;
+            _overrideProxyCredentials = credentials;
+            _overrideProxySet = true;
         }
 
         public WebProxy? GetUserConfiguredProxy()
