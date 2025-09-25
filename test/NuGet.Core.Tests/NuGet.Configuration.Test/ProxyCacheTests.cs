@@ -1,6 +1,7 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Net;
 using Moq;
 using NuGet.Common;
@@ -146,6 +147,104 @@ namespace NuGet.Configuration.Test
             // Assert
             AssertProxy(host, username, password, proxy);
             Assert.Equal(bypassedAddresses, proxy!.BypassList);
+        }
+
+        [Fact]
+        public void SetOverrideProxySettings_WithValidProxy_SetsOverrideProxy()
+        {
+            // Arrange
+            var settings = Mock.Of<ISettings>();
+            var environment = Mock.Of<IEnvironmentVariableReader>();
+            var proxyCache = new ProxyCache(settings, environment);
+            var proxy = new WebProxy("http://proxy.example.com:8080");
+            var credentials = new NetworkCredential("testuser", "testpass");
+
+            // Act
+            proxyCache.SetOverrideProxySettings(proxy, credentials);
+
+            // Assert
+            var sourceUri = new Uri("http://example.com");
+            var result = proxyCache.GetProxy(sourceUri);
+            Assert.Same(proxy, result);
+            Assert.True(proxyCache.UseProxy());
+            Assert.Same(credentials, proxyCache.GetDefaultProxyCredentials());
+        }
+
+        [Fact]
+        public void GetProxy_WithOverrideProxy_IgnoresSettingsAndEnvironment()
+        {
+            // Arrange
+            var settings = new Mock<ISettings>(MockBehavior.Strict);
+            settings.Setup(s => s.GetSection("config"))
+                .Returns(new VirtualSettingSection("config",
+                    new AddItem("http_proxy", "http://settings.proxy.com")));
+
+            var environment = new Mock<IEnvironmentVariableReader>(MockBehavior.Strict);
+            environment.Setup(s => s.GetEnvironmentVariable("http_proxy")).Returns("http://env.proxy.com");
+            environment.Setup(s => s.GetEnvironmentVariable("no_proxy")).Returns("");
+
+            var proxyCache = new ProxyCache(settings.Object, environment.Object);
+            var overrideProxy = new WebProxy("http://override.proxy.com");
+            var credentials = new NetworkCredential("user", "pass");
+
+            // Act
+            proxyCache.SetOverrideProxySettings(overrideProxy, credentials);
+            var result = proxyCache.GetProxy(new Uri("http://example.com"));
+
+            // Assert
+            Assert.Same(overrideProxy, result);
+
+            // Verify that settings and environment were not accessed after override was set
+            settings.Verify(s => s.GetSection("config"), Times.Never);
+            environment.Verify(s => s.GetEnvironmentVariable("http_proxy"), Times.Never);
+        }
+
+        [Fact]
+        public void GetDefaultProxyCredentials_WithOverride_ReturnsCredentials()
+        {
+            // Arrange
+            var settings = Mock.Of<ISettings>();
+            var environment = Mock.Of<IEnvironmentVariableReader>();
+            var proxyCache = new ProxyCache(settings, environment);
+            var proxy = new WebProxy("http://proxy.example.com");
+            var credentials = new NetworkCredential("testuser", "testpass");
+
+            // Act
+            proxyCache.SetOverrideProxySettings(proxy, credentials);
+
+            // Assert
+            var result = proxyCache.GetDefaultProxyCredentials();
+            Assert.Same(credentials, result);
+        }
+
+        [Fact]
+        public void SetOverrideProxySettings_Multiple_Times_UpdatesCorrectly()
+        {
+            // Arrange
+            var settings = Mock.Of<ISettings>();
+            var environment = Mock.Of<IEnvironmentVariableReader>();
+            var proxyCache = new ProxyCache(settings, environment);
+
+            var firstProxy = new WebProxy("http://first.proxy.com");
+            var firstCredentials = new NetworkCredential("user1", "pass1");
+            var secondProxy = new WebProxy("http://second.proxy.com");
+            var secondCredentials = new NetworkCredential("user2", "pass2");
+
+            // Act
+            proxyCache.SetOverrideProxySettings(firstProxy, firstCredentials);
+            var firstResult = proxyCache.GetProxy(new Uri("http://example.com"));
+            var firstCreds = proxyCache.GetDefaultProxyCredentials();
+
+            proxyCache.SetOverrideProxySettings(secondProxy, secondCredentials);
+            var secondResult = proxyCache.GetProxy(new Uri("http://example.com"));
+            var secondCreds = proxyCache.GetDefaultProxyCredentials();
+
+            // Assert
+            Assert.Same(firstProxy, firstResult);
+            Assert.Same(firstCredentials, firstCreds);
+            Assert.Same(secondProxy, secondResult);
+            Assert.Same(secondCredentials, secondCreds);
+            Assert.True(proxyCache.UseProxy());
         }
 
         private static void AssertProxy(string proxyAddress, string? username, string? password, WebProxy? actual)
