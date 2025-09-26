@@ -1,6 +1,1 @@
 #nullable enable
-NuGet.Configuration.IProxyCache.GetDefaultProxyCredentials() -> System.Net.ICredentials?
-NuGet.Configuration.IProxyCache.UseProxy() -> bool
-NuGet.Configuration.ProxyCache.GetDefaultProxyCredentials() -> System.Net.ICredentials?
-NuGet.Configuration.ProxyCache.SetOverrideProxySettings(System.Net.IWebProxy! proxy, System.Net.ICredentials! credentials) -> void
-NuGet.Configuration.ProxyCache.UseProxy() -> bool
