@@ -18,6 +18,18 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace NuGet.Protocol
 {
+    /// <summary>
+    /// Provides an HttpHandlerResourceV3 for a given package source.
+    /// </summary>
+    /// <remarks>
+    /// HttpHandlerResourceV3Provider
+    ///     ↓ (provides HttpHandlerResource)
+    /// HttpSourceResourceProvider
+    ///     ↓ (uses HttpHandlerResource to create HttpSource)
+    /// HttpSourceResource
+    ///     ↓ (used by all HTTP-based providers)
+    /// All V3 and V2 Resources that need HTTP access
+    /// </remarks>
     public class HttpHandlerResourceV3Provider : ResourceProvider
     {
         private readonly IProxyCache _proxyCache;
@@ -54,15 +66,39 @@ namespace NuGet.Protocol
             return Task.FromResult(new Tuple<bool, INuGetResource>(curResource != null, curResource));
         }
 
+        // To save time of someone coming back to this code later, here is a list of resources that use HttpHandlerResourceV3Provider:
+        //
+        // All V3 Resources that depend on HttpSourceResource - INDIRECT USERS
+        // Based on the grep results, these all call await source.GetResourceAsync<HttpSourceResource>(token):
+        // PackageUpdateResource (via PackageUpdateResourceV3Provider)
+        // RegistrationResourceV3 (via RegistrationResourceV3Provider)
+        // ServiceIndexResourceV3 (via ServiceIndexResourceV3Provider)
+        // PackageSearchResource (via PackageSearchResourceV3Provider)
+        // PackageMetadataResource (via PackageMetadataResourceV3Provider)
+        // DownloadResource (via DownloadResourceV3Provider)
+        // DependencyInfoResource (via DependencyInfoResourceV3Provider)
+        // AutoCompleteResource (via AutoCompleteResourceV3Provider)
+        //
+        // All V2 Resources that depend on HttpSourceResource - INDIRECT USERS
+        // ODataServiceDocumentResourceV2 (via ODataServiceDocumentResourceV2Provider)
+        // Plus all V2 feed providers (search, metadata, download, etc.)
         private HttpHandlerResourceV3 CreateResource(PackageSource packageSource)
         {
             var sourceUri = packageSource.SourceUri;
             var proxy = _proxyCache.GetProxy(sourceUri);
+            var useProxy = _proxyCache.UseProxy();
+#if IS_CORECLR
+            var defaultProxyCredentials = ProxyCache.Instance.GetDefaultProxyCredentials();
+#endif
 
             // replace the handler with the proxy aware handler
             var clientHandler = new HttpClientHandler
             {
+                UseProxy = useProxy,
                 Proxy = proxy,
+#if IS_CORECLR
+                DefaultProxyCredentials = defaultProxyCredentials,
+#endif
                 AutomaticDecompression = (DecompressionMethods.GZip | DecompressionMethods.Deflate),
             };
 
