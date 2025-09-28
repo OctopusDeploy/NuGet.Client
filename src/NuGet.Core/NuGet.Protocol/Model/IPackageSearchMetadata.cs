@@ -36,6 +36,7 @@ namespace NuGet.Protocol.Core.Types
         string Summary { get; }
         string Tags { get; }
         string Title { get; }
+        string ReleaseNotes { get; }
 
         bool IsListed { get; }
         bool PrefixReserved { get; }

@@ -97,6 +97,7 @@ NuGet.Protocol.Core.Types.IPackageSearchMetadata.PrefixReserved.get -> bool
 NuGet.Protocol.Core.Types.IPackageSearchMetadata.Published.get -> System.DateTimeOffset?
 ~NuGet.Protocol.Core.Types.IPackageSearchMetadata.ReadmeFileUrl.get -> string
 ~NuGet.Protocol.Core.Types.IPackageSearchMetadata.ReadmeUrl.get -> System.Uri
+~NuGet.Protocol.Core.Types.IPackageSearchMetadata.ReleaseNotes.get -> string
 ~NuGet.Protocol.Core.Types.IPackageSearchMetadata.ReportAbuseUrl.get -> System.Uri
 NuGet.Protocol.Core.Types.IPackageSearchMetadata.RequireLicenseAcceptance.get -> bool
 ~NuGet.Protocol.Core.Types.IPackageSearchMetadata.Summary.get -> string
@@ -202,6 +203,8 @@ NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetada
 ~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReadmeFileUrl.set -> void
 ~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReadmeUrl.get -> System.Uri
 ~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReadmeUrl.set -> void
+~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReleaseNotes.get -> string
+~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReleaseNotes.set -> void
 ~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReportAbuseUrl.get -> System.Uri
 ~NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.ReportAbuseUrl.set -> void
 NuGet.Protocol.Core.Types.PackageSearchMetadataBuilder.ClonedPackageSearchMetadata.RequireLicenseAcceptance.get -> bool
@@ -653,6 +656,7 @@ NuGet.Protocol.LocalPackageSearchMetadata.PrefixReserved.get -> bool
 NuGet.Protocol.LocalPackageSearchMetadata.Published.get -> System.DateTimeOffset?
 ~NuGet.Protocol.LocalPackageSearchMetadata.ReadmeFileUrl.get -> string
 ~NuGet.Protocol.LocalPackageSearchMetadata.ReadmeUrl.get -> System.Uri
+~NuGet.Protocol.LocalPackageSearchMetadata.ReleaseNotes.get -> string
 ~NuGet.Protocol.LocalPackageSearchMetadata.ReportAbuseUrl.get -> System.Uri
 NuGet.Protocol.LocalPackageSearchMetadata.RequireLicenseAcceptance.get -> bool
 ~NuGet.Protocol.LocalPackageSearchMetadata.Summary.get -> string
@@ -776,6 +780,7 @@ NuGet.Protocol.PackageSearchMetadata.PrefixReserved.get -> bool
 NuGet.Protocol.PackageSearchMetadata.Published.get -> System.DateTimeOffset?
 ~NuGet.Protocol.PackageSearchMetadata.ReadmeFileUrl.get -> string
 ~NuGet.Protocol.PackageSearchMetadata.ReadmeUrl.get -> System.Uri
+~NuGet.Protocol.PackageSearchMetadata.ReleaseNotes.get -> string
 ~NuGet.Protocol.PackageSearchMetadata.ReportAbuseUrl.get -> System.Uri
 ~NuGet.Protocol.PackageSearchMetadata.ReportAbuseUrl.set -> void
 NuGet.Protocol.PackageSearchMetadata.RequireLicenseAcceptance.get -> bool
@@ -813,6 +818,7 @@ NuGet.Protocol.PackageSearchMetadataV2Feed.PrefixReserved.get -> bool
 NuGet.Protocol.PackageSearchMetadataV2Feed.Published.get -> System.DateTimeOffset?
 ~NuGet.Protocol.PackageSearchMetadataV2Feed.ReadmeFileUrl.get -> string
 ~NuGet.Protocol.PackageSearchMetadataV2Feed.ReadmeUrl.get -> System.Uri
+~NuGet.Protocol.PackageSearchMetadataV2Feed.ReleaseNotes.get -> string
 ~NuGet.Protocol.PackageSearchMetadataV2Feed.ReportAbuseUrl.get -> System.Uri
 NuGet.Protocol.PackageSearchMetadataV2Feed.RequireLicenseAcceptance.get -> bool
 ~NuGet.Protocol.PackageSearchMetadataV2Feed.Summary.get -> string
@@ -1469,12 +1475,14 @@ NuGet.Protocol.V2FeedPackageInfo.LastEdited.get -> System.DateTimeOffset?
 ~NuGet.Protocol.V2FeedPackageInfo.PackageHashAlgorithm.get -> string
 ~NuGet.Protocol.V2FeedPackageInfo.ProjectUrl.get -> string
 NuGet.Protocol.V2FeedPackageInfo.Published.get -> System.DateTimeOffset?
+~NuGet.Protocol.V2FeedPackageInfo.ReleaseNotes.get -> string
 ~NuGet.Protocol.V2FeedPackageInfo.ReportAbuseUrl.get -> string
 NuGet.Protocol.V2FeedPackageInfo.RequireLicenseAcceptance.get -> bool
 ~NuGet.Protocol.V2FeedPackageInfo.Summary.get -> string
 ~NuGet.Protocol.V2FeedPackageInfo.Tags.get -> string
 ~NuGet.Protocol.V2FeedPackageInfo.Title.get -> string
 ~NuGet.Protocol.V2FeedPackageInfo.V2FeedPackageInfo(NuGet.Packaging.Core.PackageIdentity identity, string title, string summary, string description, System.Collections.Generic.IEnumerable<string> authors, System.Collections.Generic.IEnumerable<string> owners, string iconUrl, string licenseUrl, string projectUrl, string reportAbuseUrl, string galleryDetailsUrl, string tags, System.DateTimeOffset? created, System.DateTimeOffset? lastEdited, System.DateTimeOffset? published, string dependencies, bool requireLicenseAccept, string downloadUrl, string downloadCount, string packageHash, string packageHashAlgorithm, NuGet.Versioning.NuGetVersion minClientVersion) -> void
+~NuGet.Protocol.V2FeedPackageInfo.V2FeedPackageInfo(NuGet.Packaging.Core.PackageIdentity identity, string title, string summary, string description, System.Collections.Generic.IEnumerable<string> authors, System.Collections.Generic.IEnumerable<string> owners, string iconUrl, string licenseUrl, string projectUrl, string reportAbuseUrl, string galleryDetailsUrl, string tags, System.DateTimeOffset? created, System.DateTimeOffset? lastEdited, System.DateTimeOffset? published, string dependencies, bool requireLicenseAccept, string downloadUrl, string downloadCount, string packageHash, string packageHashAlgorithm, NuGet.Versioning.NuGetVersion minClientVersion, string releaseNotes) -> void
 NuGet.Protocol.V2FeedPage
 ~NuGet.Protocol.V2FeedPage.Items.get -> System.Collections.Generic.IReadOnlyList<NuGet.Protocol.V2FeedPackageInfo>
 ~NuGet.Protocol.V2FeedPage.NextUri.get -> string
