@@ -83,6 +83,7 @@ NuGet.Configuration.IPackageSourceProvider.LoadPackageSources() -> System.Collec
 NuGet.Configuration.IPackageSourceProvider.PackageSourcesChanged -> System.EventHandler?
 NuGet.Configuration.IPackageSourceProvider.RemovePackageSource(string! name) -> void
 NuGet.Configuration.IPackageSourceProvider.SaveActivePackageSource(NuGet.Configuration.PackageSource! source) -> void
+NuGet.Configuration.IPackageSourceProvider.SaveAuditSources(System.Collections.Generic.IEnumerable<NuGet.Configuration.PackageSource!>! sources) -> void
 NuGet.Configuration.IPackageSourceProvider.SavePackageSources(System.Collections.Generic.IEnumerable<NuGet.Configuration.PackageSource!>! sources) -> void
 NuGet.Configuration.IPackageSourceProvider.UpdatePackageSource(NuGet.Configuration.PackageSource! source, bool updateCredentials, bool updateEnabled) -> void
 NuGet.Configuration.IProxyCache
@@ -197,13 +198,11 @@ NuGet.Configuration.PackageSourceProvider
 NuGet.Configuration.PackageSourceProvider.ActivePackageSourceName.get -> string?
 NuGet.Configuration.PackageSourceProvider.AddPackageSource(NuGet.Configuration.PackageSource! source) -> void
 NuGet.Configuration.PackageSourceProvider.DefaultPushSource.get -> string?
-NuGet.Configuration.PackageSourceProvider.DisablePackageSource(NuGet.Configuration.PackageSource! source) -> void
 NuGet.Configuration.PackageSourceProvider.DisablePackageSource(string! name) -> void
 NuGet.Configuration.PackageSourceProvider.EnablePackageSource(string! name) -> void
 NuGet.Configuration.PackageSourceProvider.GetPackageSourceByName(string! name) -> NuGet.Configuration.PackageSource?
 NuGet.Configuration.PackageSourceProvider.GetPackageSourceBySource(string! source) -> NuGet.Configuration.PackageSource?
 NuGet.Configuration.PackageSourceProvider.GetPackageSourceNamesMatchingNamePrefix(string! namePrefix) -> System.Collections.Generic.HashSet<string!>!
-NuGet.Configuration.PackageSourceProvider.IsPackageSourceEnabled(NuGet.Configuration.PackageSource! source) -> bool
 NuGet.Configuration.PackageSourceProvider.IsPackageSourceEnabled(string! name) -> bool
 NuGet.Configuration.PackageSourceProvider.LoadAuditSources() -> System.Collections.Generic.IReadOnlyList<NuGet.Configuration.PackageSource!>!
 NuGet.Configuration.PackageSourceProvider.LoadPackageSources() -> System.Collections.Generic.IEnumerable<NuGet.Configuration.PackageSource!>!
@@ -216,17 +215,15 @@ NuGet.Configuration.PackageSourceProvider.PackageSourceProvider(NuGet.Configurat
 NuGet.Configuration.PackageSourceProvider.PackageSourcesChanged -> System.EventHandler?
 NuGet.Configuration.PackageSourceProvider.RemovePackageSource(string! name) -> void
 NuGet.Configuration.PackageSourceProvider.SaveActivePackageSource(NuGet.Configuration.PackageSource! source) -> void
+NuGet.Configuration.PackageSourceProvider.SaveAuditSources(System.Collections.Generic.IEnumerable<NuGet.Configuration.PackageSource!>! sources) -> void
 NuGet.Configuration.PackageSourceProvider.SavePackageSources(System.Collections.Generic.IEnumerable<NuGet.Configuration.PackageSource!>! sources) -> void
 NuGet.Configuration.PackageSourceProvider.Settings.get -> NuGet.Configuration.ISettings!
 NuGet.Configuration.PackageSourceProvider.UpdatePackageSource(NuGet.Configuration.PackageSource! source, bool updateCredentials, bool updateEnabled) -> void
 NuGet.Configuration.ProxyCache
-NuGet.Configuration.ProxyCache.Add(System.Net.IWebProxy? proxy) -> void
 NuGet.Configuration.ProxyCache.GetCredential(System.Uri! proxyAddress, string! authType) -> System.Net.NetworkCredential?
-NuGet.Configuration.ProxyCache.GetDefaultProxyCredentials() -> System.Net.ICredentials?
 NuGet.Configuration.ProxyCache.GetProxy(System.Uri! sourceUri) -> System.Net.IWebProxy?
 NuGet.Configuration.ProxyCache.GetUserConfiguredProxy() -> NuGet.Configuration.WebProxy?
 NuGet.Configuration.ProxyCache.ProxyCache(NuGet.Configuration.ISettings! settings, NuGet.Common.IEnvironmentVariableReader! environment) -> void
-NuGet.Configuration.ProxyCache.SetOverrideProxySettings(System.Net.IWebProxy? proxy, System.Net.ICredentials? defaultProxyCredentials) -> void
 NuGet.Configuration.ProxyCache.UpdateCredential(System.Uri! proxyAddress, System.Net.NetworkCredential! credentials) -> void
 NuGet.Configuration.ProxyCache.Version.get -> System.Guid
 NuGet.Configuration.RepositoryItem
