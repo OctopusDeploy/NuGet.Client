@@ -166,7 +166,6 @@ namespace NuGet.Configuration.Test
             var sourceUri = new Uri("http://example.com");
             var result = proxyCache.GetProxy(sourceUri);
             Assert.Same(proxy, result);
-            Assert.True(proxyCache.UseProxy());
             Assert.Same(credentials, proxyCache.GetDefaultProxyCredentials());
         }
 
@@ -244,7 +243,6 @@ namespace NuGet.Configuration.Test
             Assert.Same(firstCredentials, firstCreds);
             Assert.Same(secondProxy, secondResult);
             Assert.Same(secondCredentials, secondCreds);
-            Assert.True(proxyCache.UseProxy());
         }
 
         private static void AssertProxy(string proxyAddress, string? username, string? password, WebProxy? actual)

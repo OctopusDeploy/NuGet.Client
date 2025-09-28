@@ -86,7 +86,6 @@ namespace NuGet.Protocol
         {
             var sourceUri = packageSource.SourceUri;
             var proxy = _proxyCache.GetProxy(sourceUri);
-            var useProxy = _proxyCache.UseProxy();
 #if IS_CORECLR
             var defaultProxyCredentials = ProxyCache.Instance.GetDefaultProxyCredentials();
 #endif
@@ -94,7 +93,6 @@ namespace NuGet.Protocol
             // replace the handler with the proxy aware handler
             var clientHandler = new HttpClientHandler
             {
-                UseProxy = useProxy,
                 Proxy = proxy,
 #if IS_CORECLR
                 DefaultProxyCredentials = defaultProxyCredentials,
