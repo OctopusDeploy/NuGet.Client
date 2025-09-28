@@ -39,7 +39,7 @@ namespace NuGet.Protocol.Tests
                 .Where(p => p.PropertyType == typeof(string))
                 .ToArray();
 
-            stringProperties.Should().HaveCount(10,
+            stringProperties.Should().HaveCount(11,
                 $"the number of string properties changed in PackageSearchMetadata " +
                 $"[{string.Join(", ", stringProperties.Select(p => p.Name))}]. " +
                 "Please make sure this change is accounted for in the CacheStrings method");
