@@ -202,4 +202,20 @@ jobs:
         with:
           project: Nuget.Client
           release_number: ${{ env.PACKAGE_VERSION }}
-          package_version: ${{ env.PACKAGE_VERSION }}
+          # Packages docs:
+          # Format: StepName:Version or PackageID:Version or StepName:PackageName:Version.
+          # We specifically target the package name of NuGet.CommandLine/SourcePackage because our step uses both
+          # - SourcePackage = ${{ env.PACKAGE_VERSION }} === 6.14.0-release.213 (this is StepName:PackageName:Version)
+          # - Nuget.CommandLine = 6.14.0 (this not listed here will resolve to its PackageID)
+          packages: |
+            Package Push - NuGet.CommandLine:SourcePackage:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Common:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Configuration:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Frameworks:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Packaging:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Protocol:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Versioning:${{ env.PACKAGE_VERSION }}
+            *:NuGet.PackageManagement:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Build.Tasks:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Commands:${{ env.PACKAGE_VERSION }}
+            *:NuGet.Resolver:${{ env.PACKAGE_VERSION }}
