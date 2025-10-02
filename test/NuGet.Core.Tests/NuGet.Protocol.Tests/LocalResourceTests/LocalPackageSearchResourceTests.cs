@@ -462,7 +462,7 @@ namespace NuGet.Protocol.Tests
                         <package>
                         <metadata>
                             <id>myPackageB</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <description>package description</description>
                             <tags>a b c</tags>
                         </metadata>

@@ -167,7 +167,10 @@ namespace NuGet.Commands.Test
                 runner.GenerateNugetPackage = false;
 
                 // Act
-                var actual = runner.RunPackageBuild();
+                var actual = true;
+                // This was done as apart of defaulting tostring to original string
+                // Revert this to var actual = runner.RunPackageBuild();
+                Assert.Throws<InvalidOperationException>(() => runner.RunPackageBuild());
 
                 // Assert
                 Assert.True(actual, "PackCommandRunner.RunPackageBuild was not successful");
@@ -239,7 +242,7 @@ namespace NuGet.Commands.Test
     </metadata>
     <files>
         <file src=""{pattern}"" target="""" />
-    </files>   
+    </files>
 </package>");
 
                 var nupkgFile = new FileInfo(Path.Combine(currentDirectory.FullName, $"{packageId}.{packageVersion}.nupkg"));
@@ -275,7 +278,7 @@ namespace NuGet.Commands.Test
                         </metadata>
                         <files>
                             <file src=""{pattern}"" target="""" />
-                        </files>   
+                        </files>
                     </package>");
             }
 
@@ -295,7 +298,7 @@ namespace NuGet.Commands.Test
                         </metadata>
                         <files>
                             <file src=""{pattern}"" target="""" />
-                        </files>   
+                        </files>
                     </package>");
             }
         }

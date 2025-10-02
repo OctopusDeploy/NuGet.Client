@@ -112,7 +112,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>x</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -203,7 +203,7 @@ namespace NuGet.CommandLine.Test
                 solution.Projects.Add(projectA);
                 solution.Create(pathContext.SolutionRoot);
 
-                // Act                
+                // Act
                 var r = Util.RestoreSolution(pathContext, expectedExitCode: 0, testOutputHelper: _testOutputHelper);
                 //delete the project.assets file to avoid no-op restore
                 File.Delete(projectA.AssetsFileOutputPath);
@@ -239,7 +239,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>x</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -256,7 +256,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>y</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -481,7 +481,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>x</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -498,7 +498,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>y</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -559,7 +559,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>x</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>
@@ -576,7 +576,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>y</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group>

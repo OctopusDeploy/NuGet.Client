@@ -207,7 +207,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -260,7 +260,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -318,7 +318,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -455,7 +455,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -490,7 +490,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Description</description>
@@ -521,7 +521,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Description</description>
@@ -553,7 +553,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -587,7 +587,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -626,7 +626,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -666,7 +666,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -705,7 +705,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -744,7 +744,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Description</description>
@@ -788,7 +788,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Description</description>
@@ -827,7 +827,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -862,7 +862,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -897,7 +897,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -935,7 +935,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -974,7 +974,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1010,7 +1010,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1049,7 +1049,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1089,7 +1089,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1128,7 +1128,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1173,7 +1173,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <developmentDependency>true</developmentDependency>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -1218,7 +1218,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1257,7 +1257,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
   <metadata minClientVersion=""2.0"">
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>testAuthor</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -1299,7 +1299,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <owners>John</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -1365,7 +1365,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
     <id>A</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>JohnDoe</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Descriptions</description>
@@ -2662,7 +2662,7 @@ Enabling license acceptance requires a license or a licenseUrl to be specified. 
 <package xmlns=""http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"">
   <metadata>
     <id>SourceDepotClient</id>
-    <version>2.8.0</version>
+    <version>2.8.0.0</version>
     <authors>pranjalg</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <licenseUrl>http://cbt-userguide/NugetCanUseInLabs.html</licenseUrl>

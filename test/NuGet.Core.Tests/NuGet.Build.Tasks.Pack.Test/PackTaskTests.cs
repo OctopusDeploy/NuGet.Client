@@ -69,7 +69,7 @@ namespace NuGet.Build.Tasks.Pack.Test
     <id>Test</id>
     <summary>Summary</summary>
     <description>Description</description>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>Microsoft</authors>
     <dependencies>
       <dependency id=""System.Collections.Immutable"" version=""4.3.0"" />
