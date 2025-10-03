@@ -209,13 +209,13 @@ jobs:
           # - Nuget.CommandLine = 6.14.0 (this not listed here will resolve to its PackageID)
           packages: |
             Package Push - NuGet.CommandLine:SourcePackage:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Common:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Configuration:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Frameworks:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Packaging:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Protocol:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Versioning:${{ env.PACKAGE_VERSION }}
-            *:NuGet.PackageManagement:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Build.Tasks:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Commands:${{ env.PACKAGE_VERSION }}
-            *:NuGet.Resolver:${{ env.PACKAGE_VERSION }}
+            NuGet.Common:${{ env.PACKAGE_VERSION }}
+            NuGet.Configuration:${{ env.PACKAGE_VERSION }}
+            NuGet.Frameworks:${{ env.PACKAGE_VERSION }}
+            NuGet.Packaging:${{ env.PACKAGE_VERSION }}
+            NuGet.Protocol:${{ env.PACKAGE_VERSION }}
+            NuGet.Versioning:${{ env.PACKAGE_VERSION }}
+            NuGet.PackageManagement:${{ env.PACKAGE_VERSION }}
+            NuGet.Build.Tasks:${{ env.PACKAGE_VERSION }}
+            NuGet.Commands:${{ env.PACKAGE_VERSION }}
+            NuGet.Resolver:${{ env.PACKAGE_VERSION }}
