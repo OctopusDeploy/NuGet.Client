@@ -255,7 +255,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                         <id>" + packageId + @"</id>
-                        <version>1.0.0</version>
+                        <version>1.0</version>
                         <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -278,7 +278,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                         <id>" + packageId + @"</id>
-                        <version>1.0.0</version>
+                        <version>1.0</version>
                         <title />
                         </metadata>
                         </package>", Encoding.UTF8);

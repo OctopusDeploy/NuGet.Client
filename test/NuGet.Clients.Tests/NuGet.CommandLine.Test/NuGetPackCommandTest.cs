@@ -265,7 +265,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -314,7 +314,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -362,7 +362,7 @@ namespace NuGet.CommandLine.Test
                     "packageA.nuspec",
 @"<package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
   <metadata>
-    <id>$package$</id>    
+    <id>$package$</id>
     <version>$version$$prerelease$</version>
     <description>Package description</description>
     <authors>Author</authors>
@@ -423,7 +423,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -478,7 +478,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -546,7 +546,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -626,7 +626,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -711,7 +711,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -789,7 +789,7 @@ namespace NuGet.CommandLine.Test
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA</title>
     <authors>test</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -3195,7 +3195,7 @@ namespace Proj1
 <package >
   <metadata>
     <id>Package</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>author</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>description</description>
@@ -4080,7 +4080,7 @@ namespace " + projectName + @"
 @"<package xmlns='http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd'>
   <metadata>
     <id>packageA</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <title>packageA&lt;T&gt;</title>
     <authors>test &lt;test@microsoft.com&gt;</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

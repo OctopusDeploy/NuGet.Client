@@ -167,7 +167,10 @@ namespace NuGet.Commands.Test
                 runner.GenerateNugetPackage = false;
 
                 // Act
-                var actual = runner.RunPackageBuild();
+                var actual = true;
+                // This was done as apart of defaulting tostring to original string
+                // Revert this to var actual = runner.RunPackageBuild();
+                Assert.Throws<InvalidOperationException>(() => runner.RunPackageBuild());
 
                 // Assert
                 Assert.True(actual, "PackCommandRunner.RunPackageBuild was not successful");

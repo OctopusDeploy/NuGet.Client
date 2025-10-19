@@ -15,7 +15,7 @@ using Xunit;
 namespace NuGet.Packaging.Test
 {
     //Package authoring best practices are an ever evolving set of rules and guidelines.
-    //Those soft recommendations are non-breaking validation message. 
+    //Those soft recommendations are non-breaking validation message.
     public class MissingReadmeRuleTests
     {
         [Theory]
@@ -28,7 +28,7 @@ namespace NuGet.Packaging.Test
 "<package xmlns=\"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd\">" +
 "   <metadata>" +
 "        <id>test</id>" +
-"        <version>1.0.0</version>" +
+"        <version>1.0</version>" +
 "        <authors>Unit Test</authors>" +
 "        <description>Sample Description</description>" +
 "        <language>en-US</language>" +
