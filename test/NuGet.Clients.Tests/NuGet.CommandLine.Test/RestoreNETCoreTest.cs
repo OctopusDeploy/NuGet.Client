@@ -7825,7 +7825,7 @@ namespace NuGet.CommandLine.Test
                         <package>
                         <metadata>
                             <id>y</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <dependencies>
                                 <group targetFramework=""net45"">
