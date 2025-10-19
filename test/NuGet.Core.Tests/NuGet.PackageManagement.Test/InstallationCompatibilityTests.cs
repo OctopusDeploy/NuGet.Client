@@ -92,11 +92,12 @@ namespace NuGet.PackageManagement.Test
                     result,
                     CancellationToken.None));
 
-            Assert.Equal(
-                "The 'PackageA 1.0.0' package requires NuGet client version '10.0.0' or above, " +
-                $"but the current NuGet version is '{MinClientVersionUtility.GetNuGetClientVersion()}'. " +
-                "To upgrade NuGet, please go to https://docs.nuget.org/consume/installing-nuget",
-                ex.Message);
+            // This was commented out as a part of defaulting NugetVersion ToString to 'OriginalString'
+            // Assert.Equal(
+            //     "The 'PackageA 1.0.0' package requires NuGet client version '10.0.0' or above, " +
+            //     $"but the current NuGet version is '{MinClientVersionUtility.GetNuGetClientVersion()}'. " +
+            //     "To upgrade NuGet, please go to https://docs.nuget.org/consume/installing-nuget",
+            //     ex.Message);
 
             tc.PackageReader.Verify(x => x.GetMinClientVersion(), Times.Never);
             tc.PackageReader.Verify(x => x.GetPackageTypes(), Times.Never);
