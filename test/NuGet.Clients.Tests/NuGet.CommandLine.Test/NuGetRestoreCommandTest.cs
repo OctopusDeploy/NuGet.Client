@@ -2234,7 +2234,7 @@ EndProject";
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include=""TestPackage.AuthorSigned"">
-      <Version>1.0.0</Version>
+      <version>1.0</version>
     </PackageReference>
   </ItemGroup>
   <Import Project=""$(MSBuildToolsPath)\Microsoft.CSharp.targets"" />

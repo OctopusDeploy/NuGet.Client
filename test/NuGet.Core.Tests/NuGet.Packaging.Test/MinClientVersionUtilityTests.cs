@@ -134,7 +134,7 @@ namespace NuGet.Packaging.Test
                         <package>
                         <metadata minClientVersion=""{version}"">
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <frameworkAssemblies>
                                 <frameworkAssembly assemblyName=""System.Runtime"" />
@@ -156,7 +156,7 @@ namespace NuGet.Packaging.Test
                         <package>
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <frameworkAssemblies>
                                 <frameworkAssembly assemblyName=""System.Runtime"" />
