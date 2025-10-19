@@ -49,7 +49,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*.*"" copyToOutput=""TRUE"" flatten=""true"" />
@@ -118,7 +118,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*.*"" copyToOutput=""TRUE"" flatten=""true"" />
@@ -187,7 +187,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" copyToOutput=""TRUE"" flatten=""true"" />
@@ -265,7 +265,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -361,7 +361,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -460,7 +460,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -556,7 +556,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -646,7 +646,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*.txt"" copyToOutput=""true"" />
@@ -722,7 +722,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*.txt"" copyToOutput=""TRUE"" />
@@ -793,7 +793,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" buildAction=""Compile"" />
@@ -863,7 +863,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*.txt"" buildAction=""compile"" />
@@ -933,7 +933,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" copyToOutput=""true"" buildAction=""BAD!"" />
@@ -1009,7 +1009,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include="".././././**/*.txt"" copyToOutput=""true"" />
@@ -1085,7 +1085,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" exclude=""**/a/b/*.txt"" copyToOutput=""true"" />
@@ -1163,7 +1163,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" exclude=""**/b"" copyToOutput=""true"" />
@@ -1241,7 +1241,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" buildAction=""None"" copyToOutput=""true"" />
@@ -1322,7 +1322,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/b/"" copyToOutput=""true"" />
@@ -1403,7 +1403,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""../**/images.jpg"" buildAction=""None"" copyToOutput=""true"" flatten=""true"" />
@@ -1486,7 +1486,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" exclude=""**/*.xml"" buildAction=""None"" copyToOutput=""true"" flatten=""true"" />
@@ -1569,7 +1569,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""**/*"" buildAction=""None"" copyToOutput=""true"" flatten=""true"" />
@@ -1646,7 +1646,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""any/any/config.xml"" buildAction=""None"" copyToOutput=""true"" flatten=""true"" />
@@ -1718,7 +1718,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include="""" buildAction=""None"" copyToOutput=""true"" flatten=""true"" />
@@ -2037,7 +2037,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                         <id>runtimes</id>
-                        <version>1.0.0</version>
+                        <version>1.0</version>
                         <title />
                         </metadata>
                         </package>", Encoding.UTF8);
@@ -2066,7 +2066,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                             <contentFiles>
                                 <files include=""cs/net45/config/config.xml"" buildAction=""none"" />
@@ -2099,7 +2099,7 @@ namespace NuGet.Commands.Test
                         <package xmlns=""http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd"">
                         <metadata>
                             <id>packageA</id>
-                            <version>1.0.0</version>
+                            <version>1.0</version>
                             <title />
                         </metadata>
                         </package>", Encoding.UTF8);

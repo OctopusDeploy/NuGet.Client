@@ -134,7 +134,7 @@ namespace NuGet.CommandLine
                         if (hasProjectFile)
                         {
                             content = content.Replace("<id>mydummyidhere123123123</id>", "<id>$id$</id>");
-                            content = content.Replace("<version>1.0.0</version>", "<version>$version$</version>");
+                            content = content.Replace("<version>1.0</version>", "<version>$version$</version>");
                         }
                         File.WriteAllText(nuspecFile, RemoveSchemaNamespace(AddCommentedIconAttribute(content, sampleIconFile)));
                     }

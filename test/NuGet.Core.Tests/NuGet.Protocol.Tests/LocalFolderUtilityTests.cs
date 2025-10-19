@@ -1078,7 +1078,7 @@ namespace NuGet.Protocol.Tests
             testList.Add("existingFilePath1");
             string packagePath = string.Empty;
 
-            //Act            
+            //Act
             LocalFolderUtility.EnsurePackageFileExists(packagePath, testList);
 
             //Assert
@@ -1260,7 +1260,8 @@ namespace NuGet.Protocol.Tests
         [InlineData("packageA.1.0.0.0.nupkg", "packageA", "packageA.1.0.0.0")]
         [InlineData("packageA.1.0.0-alpha.nupkg", "packageA", "packageA.1.0.0-alpha")]
         [InlineData("packageA.1.0.0-alpha.1.2.3.nupkg", "packageA", "packageA.1.0.0-alpha.1.2.3")]
-        [InlineData("packageA.1.0.0-alpha.1.2.3+a.b.c.nupkg", "packageA", "packageA.1.0.0-alpha.1.2.3")]
+        // Appended +a.b.c to Expected as apart of the 'default tostring to original string' change
+        [InlineData("packageA.1.0.0-alpha.1.2.3+a.b.c.nupkg", "packageA", "packageA.1.0.0-alpha.1.2.3+a.b.c")]
         [InlineData("packageA.1.0.01.nupkg", "packageA", "packageA.1.0.01")]
         [InlineData("packageA.0001.0.01.nupkg", "packageA", "packageA.0001.0.01")]
         [InlineData("packageA.1.1.1.nupkg", "packageA.1", "packageA.1.1.1")]

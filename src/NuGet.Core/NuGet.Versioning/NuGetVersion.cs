@@ -159,9 +159,12 @@ namespace NuGet.Versioning
             // Versions with SemVer 2.0.0 components are automatically normalized,
             // non-normalized strings are only allowed for backcompat with older versions
             // of nuget, and those did not support SemVer 2.0.0.
-            if (string.IsNullOrEmpty(_originalString) || IsSemVer2)
+            // reimplement: https://github.com/OctopusDeploy/NuGet.Client/commit/772d1fb34b4471015327ed7887340d61038df190
+            // OCTOPUS: Use the intended version wherever possible
+            if (string.IsNullOrEmpty(_originalString))// || IsSemVer2)
             {
-                return ToNormalizedString();
+                // reimplement: https://github.com/OctopusDeploy/NuGet.Client/commit/76d4238dbd0d98ebae02248203e39eb02f67ad77
+                throw new InvalidOperationException("Octopus: We want to avoid using NormalizedVersion()");
             }
 
             return _originalString!;
