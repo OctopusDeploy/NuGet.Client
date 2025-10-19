@@ -41,7 +41,7 @@ namespace NuGet.CommandLine.Test
 <package >
   <metadata>
     <id>Package</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>{Environment.UserName}</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type=""expression"">MIT</license>
@@ -82,7 +82,7 @@ namespace NuGet.CommandLine.Test
 <package >
   <metadata>
     <id>Whatnot</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>{Environment.UserName}</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type=""expression"">MIT</license>

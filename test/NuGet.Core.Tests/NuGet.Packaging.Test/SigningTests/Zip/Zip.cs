@@ -56,7 +56,7 @@ namespace NuGet.Packaging.Test
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd\"">
   <metadata>
     <id>package</id>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <authors>author</authors>
     <owners>author</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
