@@ -182,7 +182,7 @@ namespace NuGet.CommandLine
                 {
                     throw new PackagingException(NuGetLogCode.NU5010, string.Format(CultureInfo.CurrentCulture, NuGetResources.InstallCommandPackageReferenceInvalidVersion, Version));
                 }
-                packArgs.Version = version.ToFullString();
+                packArgs.Version = version.ToString();
             }
 
             var packCommandRunner = new PackCommandRunner(packArgs, ProjectFactory.ProjectCreator);
