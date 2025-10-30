@@ -62,5 +62,50 @@ namespace NuGet.Protocol.Tests
             Assert.NotNull(httpSourceResource);
             Assert.Equal(maxHttpRequestsPerSource, sourceRepository.PackageSource.MaxHttpRequestsPerSource);
         }
+
+        [Fact]
+        public async Task WhenSourceRepositoryHasDifferentCredentialsPassword_ReturnsDifferentHttpSourceResources()
+        {
+            // Arrange
+            var sourceRepositoryA = CreateSourceRepositoryForPasswordEquality("Foo");
+            var sourceRepositoryB = CreateSourceRepositoryForPasswordEquality("Bar");
+
+            // Act
+            var provider = new HttpSourceResourceProvider();
+            var a = await provider.TryCreate(sourceRepositoryA, CancellationToken.None);
+            var b = await provider.TryCreate(sourceRepositoryB, CancellationToken.None);
+
+            // Assert
+            Assert.NotSame(a.Item2, b.Item2);
+        }
+
+        [Fact]
+        public async Task WhenSourceRepositoryHasTheSameCredentialsPassword_ReturnsTheSameHttpSourceResource()
+        {
+            // Arrange
+            var sourceRepositoryA = CreateSourceRepositoryForPasswordEquality("Foo");
+            var sourceRepositoryB = CreateSourceRepositoryForPasswordEquality("Foo");
+
+            // Act
+            var provider = new HttpSourceResourceProvider();
+            var a = await provider.TryCreate(sourceRepositoryA, CancellationToken.None);
+            var b = await provider.TryCreate(sourceRepositoryB, CancellationToken.None);
+
+            // Assert
+            Assert.Same(a.Item2, b.Item2);
+        }
+
+        private SourceRepository CreateSourceRepositoryForPasswordEquality(string password)
+        {
+            return new SourceRepository(
+                new PackageSource(_testPackageSourceURL)
+                {
+                    Credentials = new PackageSourceCredential(_testPackageSourceURL, "user", password, true, null)
+                },
+                [
+                    new HttpSourceResourceProvider()
+                ]
+            );
+        }
     }
 }
