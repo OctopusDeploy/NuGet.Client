@@ -63,20 +63,21 @@ jobs:
 
       - name: Set Release Label
         run: |
+          $branchName = "${{ github.head_ref || github.ref_name }}"
+
           if ("${{ github.event_name }}" -eq "schedule") {
             $releaseLabel = "octopus-nightly-$(Get-Date -Format 'yyyyMMdd')"
-          } elseif ("${{ github.ref_name }}" -like "release/*") {
+          } elseif ($branchName -like "release/*") {
             # All merges to "release/*" branches are considered release builds.
             $releaseLabel = "octopus-release"
           } else {
             # Use the branch name, sanitizing it for version strings
-            $releaseLabel = "${{ github.ref_name }}" -replace '[^a-zA-Z0-9\-\.]', '-'
+            $releaseLabel = $branchName -replace '[^a-zA-Z0-9\-\.]', '-'
           }
           Write-Host "event_name: ${{ github.event_name }}"
-          Write-Host "ref_name: ${{ github.ref_name }}"
-          Write-Host "default_branch: ${{ github.event.repository.default_branch }}"
+          Write-Host "branch_name: $branchName"
+          Write-Host "release_label: $releaseLabel"
 
-          Write-Host "Release label: $releaseLabel"
           echo "RELEASE_LABEL=$releaseLabel" >> $env:GITHUB_ENV
         shell: powershell
 
