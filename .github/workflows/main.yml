@@ -5,7 +5,6 @@ on:
   push:
     # Triggers the workflow on pull request events and merges/pushes to master
     branches:
-      - octopus
       - release/*
     tags-ignore:
       - '**'
@@ -64,20 +63,27 @@ jobs:
 
       - name: Set Release Label
         run: |
+          $branchName = "${{ github.head_ref || github.ref_name }}"
+
           if ("${{ github.event_name }}" -eq "schedule") {
-            $releaseLabel = "nightly$(Get-Date -Format 'yyyyMMdd')"
-          } elseif ("${{ github.ref_name }}" -eq "${{ github.event.repository.default_branch }}") {
-            $releaseLabel = "final"
-          } elseif ("${{ github.ref_name }}" -like "release/*") {
-            $releaseLabel = "release"
+            $releaseLabel = "octopus-nightly-$(Get-Date -Format 'yyyyMMdd')"
+          } elseif ($branchName -like "release/*") {
+            # All merges to "release/*" branches are considered release builds.
+            $releaseLabel = "octopus-release"
           } else {
-            $releaseLabel = "xprivate"
+            # Use the branch name, sanitizing it for version strings and prefix with pr-
+            $releaseLabel = "pr-" + ($branchName -replace '[^a-zA-Z0-9\-\.]', '-')
+
+            # Final Version must be less than 64 chars to comply with nuget version string limit
+            # e.g. pr-feature-very-long-branch-name-that-exceeds -> "6.14.1-pr-feature-very-long-branch-name-that-exc.1111"
+            if ($releaseLabel.Length -gt 40) {
+              $releaseLabel = $releaseLabel.Substring(0, 40)
+            }
           }
           Write-Host "event_name: ${{ github.event_name }}"
-          Write-Host "ref_name: ${{ github.ref_name }}"
-          Write-Host "default_branch: ${{ github.event.repository.default_branch }}"
+          Write-Host "branch_name: $branchName"
+          Write-Host "release_label: $releaseLabel"
 
-          Write-Host "Release label: $releaseLabel"
           echo "RELEASE_LABEL=$releaseLabel" >> $env:GITHUB_ENV
         shell: powershell
 
