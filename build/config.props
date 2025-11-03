@@ -54,20 +54,13 @@
     <!-- If we aren't excluding the build number, use the release label and the build number. -->
     <When Condition="'$(BuildRTM)' != 'true' AND '$(PreReleaseVersion)' != '' AND '$(PreReleaseVersion)' != '0' ">
       <PropertyGroup>
-        <PreReleaseInformationVersion Condition="'$(ReleaseLabel)' == 'final'">-octopus.$(PreReleaseVersion)</PreReleaseInformationVersion>
-        <PreReleaseInformationVersion Condition="'$(ReleaseLabel)' != 'final'">-$(ReleaseLabel).$(PreReleaseVersion)</PreReleaseInformationVersion>
+        <PreReleaseInformationVersion>-$(ReleaseLabel).$(PreReleaseVersion)</PreReleaseInformationVersion>
       </PropertyGroup>
     </When>
     <!-- If we are excluding the build number, show the release label unless we are RTM. -->
-    <When Condition="'$(ReleaseLabel)' != 'rtm' AND '$(ReleaseLabel)' != 'svc' AND '$(ReleaseLabel)' != 'rc' AND '$(ReleaseLabel)' != 'final'">
+    <When Condition="'$(ReleaseLabel)' != 'rtm' AND '$(ReleaseLabel)' != 'svc' AND '$(ReleaseLabel)' != 'rc'">
       <PropertyGroup>
         <PreReleaseInformationVersion>-$(ReleaseLabel)</PreReleaseInformationVersion>
-      </PropertyGroup>
-    </When>
-    <!-- Special case for final without build number -->
-    <When Condition="'$(ReleaseLabel)' == 'final' AND ('$(PreReleaseVersion)' == '' OR '$(PreReleaseVersion)' == '0')">
-      <PropertyGroup>
-        <PreReleaseInformationVersion>-octopus</PreReleaseInformationVersion>
       </PropertyGroup>
     </When>
   </Choose>

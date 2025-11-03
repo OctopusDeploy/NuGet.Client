@@ -5,7 +5,6 @@ on:
   push:
     # Triggers the workflow on pull request events and merges/pushes to master
     branches:
-      - octopus
       - release/*
     tags-ignore:
       - '**'
@@ -65,13 +64,13 @@ jobs:
       - name: Set Release Label
         run: |
           if ("${{ github.event_name }}" -eq "schedule") {
-            $releaseLabel = "nightly$(Get-Date -Format 'yyyyMMdd')"
-          } elseif ("${{ github.ref_name }}" -eq "${{ github.event.repository.default_branch }}") {
-            $releaseLabel = "final"
+            $releaseLabel = "octopus-nightly-$(Get-Date -Format 'yyyyMMdd')"
           } elseif ("${{ github.ref_name }}" -like "release/*") {
-            $releaseLabel = "release"
+            # All merges to "release/*" branches are considered release builds.
+            $releaseLabel = "octopus-release"
           } else {
-            $releaseLabel = "xprivate"
+            # Use the branch name, sanitizing it for version strings
+            $releaseLabel = "${{ github.ref_name }}" -replace '[^a-zA-Z0-9\-\.]', '-'
           }
           Write-Host "event_name: ${{ github.event_name }}"
           Write-Host "ref_name: ${{ github.ref_name }}"
