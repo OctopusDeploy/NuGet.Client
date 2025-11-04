@@ -71,11 +71,15 @@ jobs:
             # All merges to "release/*" branches are considered release builds.
             $releaseLabel = "octopus-release"
           } else {
-            # Use the branch name, sanitizing it for version strings and prefix with pr-
-            $releaseLabel = "pr-" + ($branchName -replace '[^a-zA-Z0-9\-\.]', '-')
+            # Since we use pre release, we need to prefix all branch names with dev- so it is
+            # alphabetically sorted to be lower than the above "octopus-release" if we don't.
+            # a branch name starting with a letter greater than "o" would be selected by renovate bot.\
+
+            # Use the branch name, sanitizing it for version strings and prefix with dev-
+            $releaseLabel = "dev-" + ($branchName -replace '[^a-zA-Z0-9\-\.]', '-')
 
             # Final Version must be less than 64 chars to comply with nuget version string limit
-            # e.g. pr-feature-very-long-branch-name-that-exceeds -> "6.14.1-pr-feature-very-long-branch-name-that-exc.1111"
+            # e.g. dev-feature-very-long-branch-name-that-exceeds -> "6.14.1-dev-feature-very-long-branch-name-that-exc.1111"
             if ($releaseLabel.Length -gt 40) {
               $releaseLabel = $releaseLabel.Substring(0, 40)
             }
