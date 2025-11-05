@@ -29,6 +29,7 @@ namespace NuGet.Protocol
         public const string Title = "title";
         public const string Summary = "summary";
         public const string Description = "description";
+        public const string ReleaseNotes = "releaseNotes";
         public const string Authors = "authors";
         public const string Owners = "owners";
         public const string IconUrl = "iconUrl";

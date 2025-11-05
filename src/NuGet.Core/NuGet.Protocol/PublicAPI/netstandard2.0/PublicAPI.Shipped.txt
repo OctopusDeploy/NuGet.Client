@@ -1622,6 +1622,7 @@ const NuGet.Protocol.JsonExtensions.JsonSerializationMaxDepth = 512 -> int
 ~const NuGet.Protocol.JsonProperties.Range = "range" -> string
 ~const NuGet.Protocol.JsonProperties.ReadmeFileUrl = "readmeFileUrl" -> string
 ~const NuGet.Protocol.JsonProperties.ReadmeUrl = "readmeUrl" -> string
+~const NuGet.Protocol.JsonProperties.ReleaseNotes = "releaseNotes" -> string
 ~const NuGet.Protocol.JsonProperties.RequireLicenseAcceptance = "requireLicenseAcceptance" -> string
 ~const NuGet.Protocol.JsonProperties.Severity = "severity" -> string
 ~const NuGet.Protocol.JsonProperties.SigningCertificates = "signingCertificates" -> string

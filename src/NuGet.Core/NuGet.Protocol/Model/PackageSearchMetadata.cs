@@ -142,7 +142,7 @@ namespace NuGet.Protocol
             private set { _titleValue = value; }
         }
 
-        [JsonIgnore]
+        [JsonProperty(PropertyName = JsonProperties.ReleaseNotes)]
         public string ReleaseNotes { get; private set; }
 
         [JsonProperty(PropertyName = JsonProperties.Version)]
