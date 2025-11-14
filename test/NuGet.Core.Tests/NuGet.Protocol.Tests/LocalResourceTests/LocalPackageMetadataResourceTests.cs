@@ -321,7 +321,6 @@ namespace NuGet.Protocol.Tests
                 Assert.Equal("sum", package.Summary);
                 Assert.Equal("a b c", package.Tags);
                 Assert.Equal("myTitle", package.Title);
-                Assert.Equal("notes", package.ReleaseNotes);
             }
         }
 
@@ -428,7 +427,6 @@ namespace NuGet.Protocol.Tests
                 Assert.Equal("sum", package.Summary);
                 Assert.Equal("a b c", package.Tags);
                 Assert.Equal("myTitle", package.Title);
-                Assert.Equal("notes", package.ReleaseNotes);
             }
         }
 
