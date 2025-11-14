@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NuGet.Common;
 using NuGet.Packaging.Core;
 using NuGet.Protocol.Core.Types;
@@ -62,7 +63,18 @@ namespace NuGet.Protocol
             Common.ILogger log,
             CancellationToken token)
         {
-            return await GetMetadataAsync(packageId, includePrerelease, includeUnlisted, range: VersionRange.All, sourceCacheContext, log, token);
+
+            var metadataList = await _regResource.GetPackageMetadata(packageId, includePrerelease, includeUnlisted, sourceCacheContext, log, token);
+            return metadataList.Select(ParseMetadata);
+            // This is the "new" get metadata.
+            // return await GetMetadataAsync(packageId, includePrerelease, includeUnlisted, range: VersionRange.All, sourceCacheContext, log, token);
+        }
+
+        private IPackageSearchMetadata ParseMetadata(JObject metadata)
+        {
+            var parsed = metadata.FromJToken<PackageSearchMetadata>();
+            parsed.ReportAbuseUrl = _reportAbuseResource?.GetReportAbuseUrl(parsed.PackageId, parsed.Version);
+            return parsed;
         }
 
         /// <summary>
@@ -98,6 +110,7 @@ namespace NuGet.Protocol
             var metadataCache = new MetadataReferenceCache();
             var registrationUri = _regResource.GetUri(packageId);
 
+            // This is "optimised" and doesnt include release notes.
             var (registrationIndex, httpSourceCacheContext) = await LoadRegistrationIndexAsync(
                 _client,
                 registrationUri,
@@ -216,7 +229,7 @@ namespace NuGet.Protocol
         }
 
         /// <summary>
-        /// Process RegistrationIndex 
+        /// Process RegistrationIndex
         /// </summary>
         /// <param name="httpSource">Httpsource instance.</param>
         /// <param name="rangeUri">Paged registration index url address.</param>

@@ -21,7 +21,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService""
@@ -49,7 +49,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService/3.0.0-rc""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService/3.0.0-rc""
@@ -81,7 +81,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService/3.0.0-beta""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService/3.0.0-beta""
@@ -122,7 +122,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService""
@@ -155,7 +155,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService/3.0.0-rc""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService/3.0.0-rc""
@@ -187,7 +187,7 @@ namespace Test.Utility
   {
    ""@id"": ""https://api-search.nuget.org/"",
    ""@type"": ""SearchGalleryQueryService/3.0.0-beta""
-  },  
+  },
   {
    ""@id"": ""https://api-metrics.nuget.org/DownloadEvent"",
    ""@type"": ""MetricsService/3.0.0-beta""
@@ -4831,6 +4831,83 @@ namespace Test.Utility
     ],
     ""title"": """",
     ""version"": ""0.0.0""
+}";
+        #endregion
+
+        #region PackageRegistrationCatalogEntryWithReleaseNotes
+        public const string PackageRegistrationCatalogEntryWithReleaseNotes = @"{
+  ""@id"": ""https://api.nuget.org/v3/catalog0/data/2018.10.15.10.13.37/polly.5.0.5.json"",
+  ""@type"": [
+    ""PackageDetails"",
+    ""catalog:Permalink""
+  ],
+  ""authors"": ""Michael Wolfenden, App vNext"",
+  ""catalog:commitId"": ""970789a8-0a65-4220-ab09-eb595e521b4c"",
+  ""catalog:commitTimeStamp"": ""2018-10-15T10:13:37.2173685Z"",
+  ""copyright"": ""Copyright © 2016, App vNext"",
+  ""created"": ""2017-02-04T22:22:58.457Z"",
+  ""description"": ""Polly is a .NET 4.0 / 4.5 / .NET Standard 1.0 library that allows developers to express resilience and transient fault handling policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation and Fallback in a fluent and thread-safe manner."",
+  ""iconUrl"": ""https://raw.github.com/App-vNext/Polly/master/Polly.png"",
+  ""id"": ""Polly"",
+  ""isPrerelease"": false,
+  ""language"": ""en-US"",
+  ""lastEdited"": ""2018-10-15T10:13:29.13Z"",
+  ""licenseUrl"": ""https://raw.github.com/App-vNext/Polly/master/LICENSE.txt"",
+  ""listed"": true,
+  ""packageHash"": ""nhM5HbS9iPWiHnViv722ehKAnEYUGhAvhYIxI67BEoaCaplXh9qsMNKG4X7Licyv/plw6vAieM/mhWLujGdTug=="",
+  ""packageHashAlgorithm"": ""SHA512"",
+  ""packageSize"": 435694,
+  ""projectUrl"": ""https://github.com/App-vNext/Polly"",
+  ""published"": ""2017-02-04T22:22:58.457Z"",
+  ""releaseNotes"": ""v5.0 is a major release with significant new resilience"",
+  ""requireLicenseAcceptance"": false,
+  ""title"": ""Polly"",
+  ""verbatimVersion"": ""5.0.5"",
+  ""version"": ""5.0.5"",
+  ""dependencyGroups"": [
+  ],
+  ""packageEntries"": [
+
+  ],
+  ""tags"": [
+  ],
+  ""@context"": {
+    ""@vocab"": ""http://schema.nuget.org/schema#"",
+    ""catalog"": ""http://schema.nuget.org/catalog#"",
+    ""xsd"": ""http://www.w3.org/2001/XMLSchema#"",
+    ""dependencies"": {
+      ""@id"": ""dependency"",
+      ""@container"": ""@set""
+    },
+    ""dependencyGroups"": {
+      ""@id"": ""dependencyGroup"",
+      ""@container"": ""@set""
+    },
+    ""packageEntries"": {
+      ""@id"": ""packageEntry"",
+      ""@container"": ""@set""
+    },
+    ""supportedFrameworks"": {
+      ""@id"": ""supportedFramework"",
+      ""@container"": ""@set""
+    },
+    ""tags"": {
+      ""@id"": ""tag"",
+      ""@container"": ""@set""
+    },
+    ""published"": {
+      ""@type"": ""xsd:dateTime""
+    },
+    ""created"": {
+      ""@type"": ""xsd:dateTime""
+    },
+    ""lastEdited"": {
+      ""@type"": ""xsd:dateTime""
+    },
+    ""catalog:commitTimeStamp"": {
+      ""@type"": ""xsd:dateTime""
+    }
+  }
 }";
         #endregion
 

@@ -38,5 +38,18 @@ namespace NuGet.Protocol.Tests
             Assert.Equal("this is a message", metaData.DeprecationMetadata.Message);
             Assert.Null(metaData.DeprecationMetadata.AlternatePackage);
         }
+
+        [Fact]
+        public void FromJTokenWithReleaseNotes()
+        {
+            // Arrange
+            var token = JToken.Parse(JsonData.PackageRegistrationCatalogEntryWithReleaseNotes);
+
+            // Act
+            var metaData = token.FromJToken<PackageSearchMetadata>();
+
+            // Assert
+            Assert.Equal("v5.0 is a major release with significant new resilience", metaData.ReleaseNotes);
+        }
     }
 }

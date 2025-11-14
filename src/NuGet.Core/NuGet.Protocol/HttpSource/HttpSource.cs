@@ -80,7 +80,7 @@ namespace NuGet.Protocol
                 cacheResult.CacheFile,
                 action: async lockedToken =>
                 {
-                    cacheResult.Stream = TryReadCacheFile(request.Uri, cacheResult.MaxAge, cacheResult.CacheFile);
+                    cacheResult.Stream = null; //TryReadCacheFile(request.Uri, cacheResult.MaxAge, cacheResult.CacheFile);
                     try
                     {
                         if (cacheResult.Stream != null)

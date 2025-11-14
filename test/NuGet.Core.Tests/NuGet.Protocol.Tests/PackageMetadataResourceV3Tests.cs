@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using NuGet.Configuration;
 using NuGet.Packaging;
 using NuGet.Packaging.Core;
 using NuGet.Protocol.Core.Types;
@@ -48,7 +49,7 @@ namespace NuGet.Protocol.Tests
                 Assert.Null(result.IconUrl);
                 Assert.Null(result.LicenseUrl);
                 Assert.Equal("http://github.com/jamesfoster/DeepEqual", result.ProjectUrl.ToString());
-                Assert.Equal("https://api.nuget.org/v3/catalog0/data/2015.02.03.18.34.51/deepequal.0.9.0.json",
+                Assert.Equal("https://api.nuget.org/v3/catalog0/data/2018.10.15.10.13.37/polly.5.0.5.json",
                     result.CatalogUri.ToString());
                 Assert.Equal(DateTimeOffset.Parse("2013-08-28T09:19:10.013Z"), result.Published);
                 Assert.False(result.RequireLicenseAcceptance);
@@ -56,6 +57,45 @@ namespace NuGet.Protocol.Tests
                 Assert.Equal(string.Join(", ", "deepequal", "deep", "equal"), result.Tags);
                 Assert.Equal("DeepEqual", result.Title);
                 Assert.True(result.IsListed);
+                Assert.Equal("Release notes for version 0.9.0", result.ReleaseNotes);
+            }
+        }
+
+        [Fact]
+        public async Task PackageMetadataResourceV3_GetMetadataAsync2()
+        {
+            // Arrange
+            // var responses = new Dictionary<string, string>();
+            // responses.Add("http://testsource.com/v3/index.json", JsonData.IndexWithoutFlatContainer);
+            // responses.Add("https://api.nuget.org/v3/registration0/deepequal/index.json", JsonData.DeepEqualRegistationIndex);
+
+            var repo = new SourceRepository(new PackageSource("https://api.nuget.org/v3/index.json"), Repository.Provider.GetCoreV3());
+
+            var resource = await repo.GetResourceAsync<PackageMetadataResource>(CancellationToken.None);
+
+            var package = new PackageIdentity("polly", NuGetVersion.Parse("5.0.5"));
+
+            // Act
+            using (var sourceCacheContext = new SourceCacheContext())
+            {
+                // string packageId,
+                // bool includePrerelease,
+                // bool includeUnlisted,
+                //     SourceCacheContext sourceCacheContext,
+                // Common.ILogger log,
+                //     CancellationToken token);
+                var packages = await resource.GetMetadataAsync(
+                    package.Id,
+                    true,
+                    false,
+                    sourceCacheContext,
+                    Common.NullLogger.Instance, CancellationToken.None);
+
+                var result = packages.FirstOrDefault(p => p.Identity.Version.ToString() == "5.0.5");
+                // Assert
+                Assert.Equal("polly", result.Identity.Id, StringComparer.OrdinalIgnoreCase);
+                Assert.Equal("5.0.5", result.Identity.Version.ToNormalizedString());
+                Assert.Equal("Release notes for version 0.9.0", result.ReleaseNotes);
             }
         }
 
