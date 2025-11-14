@@ -100,8 +100,6 @@ namespace NuGet.Test.Utility
 
             public string Title => "title";
 
-            public string ReleaseNotes => "release notes";
-
             public bool IsListed => true;
 
             public bool PrefixReserved => false;
