@@ -79,7 +79,7 @@ jobs:
             $releaseLabel = "dev-" + ($branchName -replace '[^a-zA-Z0-9\-\.]', '-')
 
             # Final Version must be less than 64 chars to comply with nuget version string limit
-            # e.g. dev-feature-very-long-branch-name-that-exceeds -> "6.14.1-dev-feature-very-long-branch-name-that-exc.1111"
+            # e.g. dev-feature-very-long-branch-name-that-exceeds -> "7.3.0-dev-feature-very-long-branch-name-that-exc.1111"
             if ($releaseLabel.Length -gt 40) {
               $releaseLabel = $releaseLabel.Substring(0, 40)
             }
@@ -133,7 +133,7 @@ jobs:
 
       - name: Build NuGet Packages 📦
         id: build
-        run: .\build.ps1 -Configuration Release -ReleaseLabel ${{ env.RELEASE_LABEL }} -BuildNumber ${{ env.BUILD_NUMBER }} -Fast -SkipUnitTest -CI
+        run: .\build.ps1 -Configuration Release -ReleaseLabel ${{ env.RELEASE_LABEL }} -BuildNumber ${{ env.BUILD_NUMBER }} -Pack -CI
 
       - name: Run NuGet.Core Unit Tests 🧪
         run: |
@@ -215,7 +215,7 @@ jobs:
           # Packages docs:
           # Format: StepName:Version or PackageID:Version or StepName:PackageName:Version.
           # We specifically target the package name of NuGet.CommandLine/SourcePackage because our step uses both
-          # - SourcePackage = ${{ env.PACKAGE_VERSION }} === 6.14.0-release.213 (this is StepName:PackageName:Version)
+          # - SourcePackage = ${{ env.PACKAGE_VERSION }} === 7.3.0-release.213 (this is StepName:PackageName:Version)
           # - Nuget.CommandLine = 6.14.0 (this not listed here will resolve to its PackageID)
           packages: |
             Package Push - NuGet.CommandLine:SourcePackage:${{ env.PACKAGE_VERSION }}
