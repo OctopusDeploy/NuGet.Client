@@ -128,7 +128,16 @@ jobs:
 
       # required for building the code see: https://github.com/NuGet/NuGet.Client/blob/dev/CONTRIBUTING.md#build
       - name: Configure Build Environment
-        run: .\configure.ps1 -Force
+        run: |
+          .\configure.ps1 -Force
+          # configure.ps1 (via build/common.ps1) exports DOTNET_ROOT/PATH using Azure
+          # DevOps logging commands, which GitHub Actions ignores. Re-export them here
+          # so the SDK that configure.ps1 installed into ./cli/ is picked up by the
+          # build step's MSBuild SDK resolver.
+          $cliRoot = Join-Path $PWD 'cli'
+          "DOTNET_ROOT=$cliRoot" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "DOTNET_MULTILEVEL_LOOKUP=0" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          $cliRoot | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
         shell: powershell
 
       - name: Build NuGet Packages 📦
