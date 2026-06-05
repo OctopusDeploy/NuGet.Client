@@ -473,6 +473,15 @@ namespace NuGet.Commands
                     logger,
                     cancellationToken);
 
+                if (packageDownloader == null)
+                {
+                    // FindPackageByIdResource returns a null downloader when the requested package version does not
+                    // exist on the source. Propagate that null instead of dereferencing it below
+                    // (SetThrottle/SetExceptionHandler), which otherwise throws a bare NullReferenceException for a
+                    // version that isn't on the feed.
+                    return null;
+                }
+
                 packageDownloader.SetThrottle(_throttle);
                 packageDownloader.SetExceptionHandler(async exception =>
                 {
