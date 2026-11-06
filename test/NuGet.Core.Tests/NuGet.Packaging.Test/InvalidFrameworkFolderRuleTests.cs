@@ -23,7 +23,7 @@ namespace NuGet.Packaging.Test
 "<package xmlns=\"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd\">" +
 "   <metadata>" +
 "        <id>test</id>" +
-"        <version>1.0.0</version>" +
+"        <version>1.0</version>" +
 "        <authors>Unit Test</authors>" +
 "        <description>Sample Description</description>" +
 "        <language>en-US</language>" +
@@ -85,7 +85,7 @@ namespace NuGet.Packaging.Test
 "<package xmlns=\"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd\">" +
 "   <metadata>" +
 "        <id>test</id>" +
-"        <version>1.0.0</version>" +
+"        <version>1.0</version>" +
 "        <authors>Unit Test</authors>" +
 "        <description>Sample Description</description>" +
 "        <language>en-US</language>" +

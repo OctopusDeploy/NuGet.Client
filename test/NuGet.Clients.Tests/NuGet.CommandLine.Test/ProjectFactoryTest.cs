@@ -614,7 +614,7 @@ namespace NuGet.CommandLine
 <package xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
     <metadata>
         <id>Assembly</id>
-        <version>1.0.0</version>
+        <version>1.0</version>
         <title />
         <authors>Author</authors>
         <owners />
