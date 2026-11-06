@@ -25,7 +25,7 @@ env:
 
 jobs:
   build-packages:
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026 # NuGet 7.9 pins .NET SDK 10.0.300, which needs MSBuild 18 (VS 2026)
     permissions:
       id-token: write # Required to obtain the ID token from GitHub Actions
       contents: write # Read Required to check out code, Write to create Git Tags
@@ -34,10 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET 9.0
+      - name: Setup .NET 10.0
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Set Octopus Deploy Flag
         run: |
