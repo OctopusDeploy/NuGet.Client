@@ -113,7 +113,13 @@ jobs:
 
           $major = $majorMatch.Groups[1].Value
           $minor = $minorMatch.Groups[1].Value
-          $patch = $patchMatch.Groups[1].Value
+          # Version the fork one patch above the upstream release it is based on (e.g. upstream 7.9.0 -> 7.9.1-octopus-release.N).
+          # A pre-release of 7.9.0 sorts below 7.9.0, so security scanners would treat our package as older than the upstream
+          # release it contains and report vulnerabilities that release already fixed.
+          # build/config.props keeps the upstream version so merges from upstream stay conflict free. The build step reads the
+          # bumped patch from the PatchNuGetVersion environment variable, because config.props only sets it when it is empty.
+          $patch = [int]$patchMatch.Groups[1].Value + 1
+          echo "PatchNuGetVersion=$patch" >> $env:GITHUB_ENV
           $baseVersion = "$major.$minor.$patch"
           # This matches logic within the build that will take a 'final' and prepend 'octopus'
           if ($releaseLabel -eq "final") {
