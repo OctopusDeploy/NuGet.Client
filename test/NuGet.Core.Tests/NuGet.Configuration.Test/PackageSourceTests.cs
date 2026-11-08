@@ -120,5 +120,33 @@ namespace NuGet.Configuration.Test
             source.IsLocal.Should().BeTrue();
             source.GetHashCode().Should().NotBe(hashCodeBefore);
         }
+
+        [Fact]
+        public void Equals_WithDifferentCredentials_AreNotEqual()
+        {
+            var a = CreateSourceForPasswordEquality("Foo");
+            var b = CreateSourceForPasswordEquality("Bar");
+
+            Assert.NotEqual(a, b);
+        }
+
+        [Fact]
+        public void Equals_WithSameCredentials_AreEqual()
+        {
+            var a = CreateSourceForPasswordEquality("Foo");
+            var b = CreateSourceForPasswordEquality("Foo");
+
+            Assert.Equal(a, b);
+        }
+        private static PackageSource CreateSourceForPasswordEquality(string password)
+        {
+            var credentials = new PackageSourceCredential("SourceName", "username", password, isPasswordClearText: false, null);
+            var source = new PackageSource("Source", "SourceName", isEnabled: false)
+            {
+                Credentials = credentials,
+                ProtocolVersion = 43
+            };
+            return source;
+        }
     }
 }

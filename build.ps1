@@ -35,7 +35,7 @@ To run full clean build, e.g after switching branches
 
 .EXAMPLE
 .\build.ps1 -f
-Fast incremental build
+Clean build (clears artifacts before building)
 
 .EXAMPLE
 .\build.ps1 -v -ea Stop
@@ -46,7 +46,7 @@ param (
     [ValidateSet('debug', 'release')]
     [Alias('c')]
     [string]$Configuration,
-    [ValidatePattern('^(beta|final|preview|rc|release|rtm|xprivate|zlocal)([0-9]*)$')]
+    [ValidatePattern('^[a-zA-Z0-9\-\.]+$')]
     [Alias('l')]
     [string]$ReleaseLabel = 'zlocal',
     [Alias('n')]
@@ -169,7 +169,7 @@ Invoke-BuildStep $VSMessage {
         $buildArgs += "-bl:msbuild.build.binlog"
     }
 
-    # Build and (If not $SkipUnitTest) Pack, Core unit tests, and Unit tests for VS
+    # Build and (If $RunUnitTests) Pack, Core unit tests, and Unit tests for VS
     Trace-Log ". `"$MSBuildExe`" $buildArgs"
     & $MSBuildExe @buildArgs
 
@@ -221,13 +221,13 @@ Invoke-BuildStep 'Running Restore RTM' {
         exit 1
     }
 } `
--skip:(-not $CI)`
+-skip:(-not $CI -or ($ReleaseLabel -ne 'rtm'))`
 -ev +BuildErrors
 
 
 Invoke-BuildStep 'Packing RTM' {
 
-    # Build and (If not $SkipUnitTest) Pack, Core unit tests, and Unit tests for VS
+    # Build and Pack for RTM
     $packArgs = "build\build.proj", "/t:BuildVS`;Pack", "/p:Configuration=$Configuration", "/p:BuildRTM=true", "/p:ReleaseLabel=$ReleaseLabel", "/p:ExcludeTestProjects=true", "/v:m", "/m"
 
     if ($BuildNumber)
@@ -249,7 +249,7 @@ Invoke-BuildStep 'Packing RTM' {
         exit 1
     }
 } `
--skip:(-not $CI)`
+-skip:(-not $CI -or ($ReleaseLabel -ne 'rtm'))`
 -ev +BuildErrors
 
 ## Calculating Build time

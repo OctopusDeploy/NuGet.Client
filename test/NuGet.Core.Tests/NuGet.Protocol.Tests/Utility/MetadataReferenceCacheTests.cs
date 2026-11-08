@@ -41,7 +41,7 @@ namespace NuGet.Protocol.Tests
             var cache = new MetadataReferenceCache();
 
             // Act
-            var cachedVersion = cache.GetVersion(version.ToString());
+            var cachedVersion = cache.GetVersion(version.ToNormalizedString());
 
             // Assert
             Assert.Equal(version, cachedVersion);
@@ -52,8 +52,8 @@ namespace NuGet.Protocol.Tests
         {
             // Arrange
             var version = new NuGetVersion(3, 2, 1);
-            var versionString1 = version.ToString();
-            var versionString2 = version.ToString();
+            var versionString1 = version.ToNormalizedString();
+            var versionString2 = version.ToNormalizedString();
 
             var cache = new MetadataReferenceCache();
 

@@ -190,6 +190,10 @@ namespace NuGet.Protocol
             internal set { _titleValue = value; }
         }
 
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string ReleaseNotes { get; private set; }
+
         [JsonProperty(PropertyName = JsonProperties.Version)]
         [JsonPropertyName(JsonProperties.Version)]
         [JsonInclude]
@@ -331,6 +335,7 @@ namespace NuGet.Protocol
             Tags = cache.GetString(Tags);
             Summary = cache.GetString(Summary);
             Title = cache.GetString(Title);
+            ReleaseNotes = cache.GetString(ReleaseNotes);
             LicenseExpression = cache.GetString(LicenseExpression);
             LicenseExpressionVersion = cache.GetString(LicenseExpressionVersion);
         }

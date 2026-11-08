@@ -3,11 +3,13 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using NuGet.Common;
 
 namespace NuGet.Configuration
 {
+    [SuppressMessage("Style", "IDE1006:Naming Styles")]
     public class ProxyCache : IProxyCache, IProxyCredentialCache
     {
 #if !IS_CORECLR
@@ -20,6 +22,20 @@ namespace NuGet.Configuration
         /// </summary>
         private static readonly IWebProxy _originalSystemProxy = WebRequest.GetSystemWebProxy();
 #endif
+        /// <summary>
+        /// Octopus overrides the (user or system proxy) with a custom proxy implementation
+        /// </summary>
+        /// <remarks>
+        /// This was a fix implemented on an older version of NuGet 3.6.1
+        /// https://github.com/OctopusDeploy/Issues/issues/2959
+        /// This fix was rejected https://github.com/NuGet/NuGet.Client/pull/1153
+        /// That lead us to fork and implement this fix.
+        ///
+        /// In updating Octopus to 6.14.x we opted to maintain this fix as a work around.
+        /// </remarks>
+        private IWebProxy? _overrideProxyWithCustomProxy;
+        private ICredentials? _overrideDefaultProxyCredentials;
+
         private readonly ConcurrentDictionary<Uri, ICredentials> _cachedCredentials = new ConcurrentDictionary<Uri, ICredentials>();
 
         private readonly ISettings _settings;
@@ -46,8 +62,21 @@ namespace NuGet.Configuration
             _environment = environment;
         }
 
+        /// <summary>
+        /// Returns a proxy (if it exists) based on what is set in priority order of:
+        /// Custom proxy, User configured proxy, System proxy, no proxy.
+        /// </summary>
+        /// <param name="sourceUri"></param>
+        /// <returns></returns>
         public IWebProxy? GetProxy(Uri sourceUri)
         {
+            // Use the override proxy if someone has set it in code
+            if (_overrideProxyWithCustomProxy is not null)
+            {
+                return _overrideProxyWithCustomProxy;
+            }
+
+            // Original NuGet Code below:
             // Check if the user has configured proxy details in settings or in the environment.
             var configuredProxy = GetUserConfiguredProxy();
             if (configuredProxy != null)
@@ -69,12 +98,40 @@ namespace NuGet.Configuration
             return null;
         }
 
+        /// <summary>
+        /// Get the manually overwritten DefaultProxyCredentials.
+        /// for when we don't set the proxy, but we want the default proxy credentials.
+        /// </summary>
+        /// <returns></returns>
+        public ICredentials? GetDefaultProxyCredentials()
+        {
+            return _overrideDefaultProxyCredentials;
+        }
+
         // Adds new proxy credentials to cache if there's not any in there yet
         private bool TryAddProxyCredentialsToCache(WebProxy configuredProxy)
         {
             // If a proxy was cached, it means the stored credentials are incorrect. Use the cached one in this case.
             var proxyCredentials = configuredProxy.Credentials ?? CredentialCache.DefaultCredentials;
             return _cachedCredentials.TryAdd(configuredProxy.ProxyAddress, proxyCredentials);
+        }
+
+        /// <summary>
+        /// Override the proxy and default proxy credentials settings
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// var proxy = new WebProxy("http://proxy.com");
+        /// var credentials = new NetworkCredential("username", "password");
+        /// ProxyCache.Instance.SetOverrideProxySettings(proxy, credentials);
+        /// </code>
+        /// </example>
+        /// <param name="proxy">Optional, if not set, default to cache behaviour, user -> system -> no proxy</param>
+        /// <param name="defaultProxyCredentials">This sets the "defaultProxyCredentials" on the HttpClientHandler (its default is null)</param>
+        public void SetOverrideProxySettings(IWebProxy? proxy, ICredentials? defaultProxyCredentials)
+        {
+            _overrideProxyWithCustomProxy = proxy;
+            _overrideDefaultProxyCredentials = defaultProxyCredentials;
         }
 
         public WebProxy? GetUserConfiguredProxy()
