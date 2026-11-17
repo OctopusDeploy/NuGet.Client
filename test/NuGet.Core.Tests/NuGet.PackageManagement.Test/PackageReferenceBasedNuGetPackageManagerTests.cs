@@ -128,8 +128,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var before = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
+            var before = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 before,
                 after);
@@ -206,8 +206,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var before = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
+            var before = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 before,
                 after);
@@ -287,10 +287,10 @@ namespace NuGet.PackageManagement.Test
 
             var packageA = "A";
             var packageB = "B";
-            var a100 = new PackageIdentity(packageA, new NuGetVersion(1, 0, 0));
-            var a200 = new PackageIdentity(packageA, new NuGetVersion(2, 0, 0));
-            var b100 = new PackageIdentity(packageB, new NuGetVersion(1, 0, 0));
-            var b200 = new PackageIdentity(packageB, new NuGetVersion(2, 0, 0));
+            var a100 = new PackageIdentity(packageA, NuGetVersion.Parse("1.0.0"));
+            var a200 = new PackageIdentity(packageA, NuGetVersion.Parse("2.0.0"));
+            var b100 = new PackageIdentity(packageB, NuGetVersion.Parse("1.0.0"));
+            var b200 = new PackageIdentity(packageB, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 a100,
                 a200,
@@ -384,9 +384,9 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var a100 = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var a200 = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(3, 0, 0));
+            var a100 = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var a200 = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("3.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 a100,
                 a200,
@@ -469,8 +469,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageA = "A";
-            var a100 = new PackageIdentity(packageA, new NuGetVersion(1, 0, 0));
-            var a200 = new PackageIdentity(packageA, new NuGetVersion(2, 0, 0));
+            var a100 = new PackageIdentity(packageA, NuGetVersion.Parse("1.0.0"));
+            var a200 = new PackageIdentity(packageA, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 a100,
                 a200);
@@ -545,8 +545,8 @@ namespace NuGet.PackageManagement.Test
 
             var packageA = "A";
             var packageB = "B";
-            var a100 = new PackageIdentity(packageA, new NuGetVersion(1, 0, 0));
-            var b100 = new PackageIdentity(packageB, new NuGetVersion(1, 0, 0));
+            var a100 = new PackageIdentity(packageA, NuGetVersion.Parse("1.0.0"));
+            var b100 = new PackageIdentity(packageB, NuGetVersion.Parse("1.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource,
                 a100,
                 b100);
@@ -691,8 +691,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var before = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
+            var before = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource, before, after);
 
             // Main Act
@@ -755,8 +755,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var before = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
+            var before = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource, before, after);
 
             // Main Act
@@ -893,8 +893,8 @@ namespace NuGet.PackageManagement.Test
             NuGetProject buildIntegratedProject = CreateBuildIntegratedProjectAndAddToSolutionManager(solutionManager, settings, referenceSpec);
 
             var packageID = "A";
-            var before = new PackageIdentity(packageID, new NuGetVersion(1, 0, 0));
-            var after = new PackageIdentity(packageID, new NuGetVersion(2, 0, 0));
+            var before = new PackageIdentity(packageID, NuGetVersion.Parse("1.0.0"));
+            var after = new PackageIdentity(packageID, NuGetVersion.Parse("2.0.0"));
             await SimpleTestPackageUtility.CreateFolderFeedV3Async(pathContext.PackageSource, before, after);
 
             // Main Act

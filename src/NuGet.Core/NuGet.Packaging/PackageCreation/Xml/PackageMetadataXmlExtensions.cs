@@ -38,7 +38,7 @@ namespace NuGet.Packaging.Xml
             }
 
             elem.Add(new XElement(ns + "id", metadata.Id));
-            AddElementIfNotNull(elem, ns, "version", metadata.Version?.ToFullString());
+            AddElementIfNotNull(elem, ns, "version", metadata.Version?.ToString());
             AddElementIfNotNull(elem, ns, "title", metadata.Title);
             if (!metadata.PackageTypes.Contains(PackageType.SymbolsPackage))
             {
